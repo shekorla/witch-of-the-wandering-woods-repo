@@ -19,6 +19,19 @@ public class PlantGrowBeh : MonoBehaviour
         workingVis=GetComponent<MeshFilter>();
     }
 
+    public void triggerSwap(plantData newData)
+    {
+        if (working == false) {
+            planted(newData);
+        }
+        else {
+            if (currentWet<=0) {
+                beenWatered(); }
+            else {
+                harvest(); }
+        }
+    }
+
     public void emptyPlot()
     {
         workingVis.mesh = defaultMesh;
@@ -30,20 +43,17 @@ public class PlantGrowBeh : MonoBehaviour
 
     public void planted(plantData newData)//reset for new plant-still needs water to grow
     {
-        if (working==false)
-        {
-            myInfo = newData;
-            delay=new WaitForSeconds(myInfo.growTime);
-            workingVis.mesh = myInfo.seedMesh;
-            growPercent = 0;
-            size = (0.1f);
-            transform.localScale = new Vector3(size, size, size);
-        }
+        myInfo = newData;
+        delay=new WaitForSeconds(myInfo.growTime);
+        workingVis.mesh = myInfo.seedMesh;
+        growPercent = 0;
+        size = (0.1f);
+        transform.localScale = new Vector3(size, size, size);
+        working = true;
     }
     
     public void beenWatered()//pick back up when watered
     {
-        working = true;
         currentWet = myInfo.waterNeed;
         StartCoroutine(plantGrow());
     }
@@ -65,16 +75,11 @@ public class PlantGrowBeh : MonoBehaviour
             size = (growPercent / 100);
             transform.localScale = new Vector3(size, size, size);
         }
-        
-        endEve.Invoke();
-    }
-    public void doneGrow()//set the visuals to fully grown and leave them there
-    {
-        workingVis.mesh = myInfo.finMesh;
+        workingVis.mesh = myInfo.finMesh;//reset with stable visuals
         transform.localScale = new Vector3(1, 1, 1);
     }
 
-    public void harvest()//give player item and reset dirt patch
+    private void harvest()//give player item and reset dirt patch
     {
         harvestEve.Invoke();
         workingVis.mesh = defaultMesh;
