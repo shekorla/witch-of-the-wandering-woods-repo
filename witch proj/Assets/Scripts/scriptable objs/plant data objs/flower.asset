@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
+  m_Name: flower
+  m_EditorClassIdentifier: 
+  seedMesh: {fileID: 8393969432434051992, guid: ef7320621e1930a4fbe58de8c4deac4a,
+    type: 3}
+  finMesh: {fileID: -2234555996635838280, guid: f6458851507ef4a40bd39043c1b4d914,
+    type: 3}
+  growTime: 0.5
+  waterNeed: 101
+  rewardName: Flower
+  rewardVal: 10
+  rewardSprite: {fileID: 0}
