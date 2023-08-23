@@ -17,5 +17,5 @@ public class onTriggerEve : MonoBehaviour
     {
         triggerExitEvent.Invoke();
     }
-    
+
 }

@@ -18,7 +18,6 @@ public class PlantGrowBeh : MonoBehaviour
     public void Awake() {//set up everything we need
         workingVis=GetComponent<MeshFilter>();
     }
-
     public void triggerSwap(plantData newData)
     {
         if (working == false) {

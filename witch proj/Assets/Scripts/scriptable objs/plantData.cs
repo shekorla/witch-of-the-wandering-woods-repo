@@ -7,8 +7,8 @@ public class plantData : ScriptableObject
     public float growTime;//seconds between grow/water checks 1.66= need 60seconds to grow
     public int waterNeed;//number of checks before it needs water again 20<x<100
     // 100=needs water once   20=needs water 5 times   5=needs water 20 times   100/x= number of waters
-    
-    public string rewardName;
-    public int rewardVal;
-    public Sprite rewardSprite;
+    public bool unlocked=false;//true means can be bought/planted
+    public string plantName;
+    public int plantVal;
+    public Sprite plantSprite;
 }

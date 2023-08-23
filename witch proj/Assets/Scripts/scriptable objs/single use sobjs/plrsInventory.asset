@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c227363ee5ea7f74c9153225ad734d42, type: 3}
   m_Name: plrsInventory
   m_EditorClassIdentifier: 
-  itemList: []
+  cropsList:
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  seedsList:
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   money: 0
