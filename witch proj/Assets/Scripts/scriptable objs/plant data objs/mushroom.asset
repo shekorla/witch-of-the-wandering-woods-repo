@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: mushroom
   m_EditorClassIdentifier: 
-  seedMesh: {fileID: -6679825976550175534, guid: 17993fc24adb4fb4c8fabbbe7e831706,
+  pltMesh: {fileID: -2088611232839375908, guid: 064baa4a933c9f947a2159a1c0849ad1,
     type: 3}
-  finMesh: {fileID: -2088611232839375908, guid: 064baa4a933c9f947a2159a1c0849ad1,
-    type: 3}
+  mat1: {fileID: -6126091556477775235, guid: 064baa4a933c9f947a2159a1c0849ad1, type: 3}
+  mat2: {fileID: 6407905733916077036, guid: 064baa4a933c9f947a2159a1c0849ad1, type: 3}
+  mat3: {fileID: 0}
+  mat4: {fileID: 0}
   growTime: 1
   waterNeed: 20
   unlocked: 0

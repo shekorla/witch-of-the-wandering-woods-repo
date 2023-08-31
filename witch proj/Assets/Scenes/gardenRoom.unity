@@ -260,7 +260,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 178827906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 178827908}
+        m_TargetAssemblyTypeName: buttonConfig, Assembly-CSharp
+        m_MethodName: changeSeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &178827906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,51 +3960,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: test plant
       objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 145018814}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: beenWatered
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: emptyPlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlantGrowBeh, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133637733272040679, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
-        type: 3}
-      propertyPath: triggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3181794490659642808, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
         type: 3}
       propertyPath: workingVis
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4435423769968220516, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
+        type: 3}
+      propertyPath: defaul
+      value: 
+      objectReference: {fileID: 11400000, guid: 373e3f68bb742bc4595b238335c2814f,
+        type: 2}
+    - target: {fileID: 4435423769968220516, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
+        type: 3}
+      propertyPath: dirtMat
+      value: 
+      objectReference: {fileID: -6126091556477775235, guid: 064baa4a933c9f947a2159a1c0849ad1,
+        type: 3}
     - target: {fileID: 4435423769968220516, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
         type: 3}
       propertyPath: endEve.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4002,6 +3986,11 @@ PrefabInstance:
         type: 3}
       propertyPath: endEve.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: doneGrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435423769968220516, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
+        type: 3}
+      propertyPath: harvestEve.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Harvest
       objectReference: {fileID: 0}
     - target: {fileID: 4435423769968220516, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
         type: 3}
@@ -4083,6 +4072,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7215299993373363941, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215299993373363941, guid: 82dff8e80d9a84f4384d005c9f7ff9de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 6407905733916077036, guid: d0ffdbbcc71789d4aa6ca13b885cdd44,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82dff8e80d9a84f4384d005c9f7ff9de, type: 3}
 --- !u!1001 &8345070700268369567
@@ -4276,6 +4276,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616360, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8680289381081499115, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
         type: 3}

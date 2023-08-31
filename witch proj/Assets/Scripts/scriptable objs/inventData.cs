@@ -6,6 +6,7 @@ public class inventData : ScriptableObject
 {
     public List<plantData> cropsList,seedsList;
     public float money;
+    public plantData currentSeed;
 
     public void sell(plantData item)
     {
@@ -16,7 +17,7 @@ public class inventData : ScriptableObject
         }
     }
 
-    public void Harvest(plantData item)//add crops to list on harvest
+    public void harvest(plantData item)//add crops to list on harvest
     {
         cropsList.Add(item);
     }
@@ -26,11 +27,16 @@ public class inventData : ScriptableObject
         seedsList.Add(item);
     }
 
-    public void canPlant(plantData item)//need to have seeds to plant seeds
+    public bool canPlant()//need to have seeds to plant seeds
     {
-        if (seedsList.Contains(item))
+        if (seedsList.Contains(currentSeed))
         {
-            seedsList.Remove(item);
+            seedsList.Remove(currentSeed);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

@@ -22,4 +22,9 @@ public class buttonConfig : MonoBehaviour
         changeImage.sprite = myData.plantSprite;
     }
 
+    public void changeSeed()
+    {
+        playerIn.currentSeed = myData;
+    }
+
 }

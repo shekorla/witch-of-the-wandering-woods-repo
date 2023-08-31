@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 997143431618108738}
   - component: {fileID: 7215299993373363941}
   - component: {fileID: 8906809278492636563}
-  - component: {fileID: 3133637733272040679}
+  - component: {fileID: 51301391542984333}
   - component: {fileID: 4435423769968220516}
   m_Layer: 0
   m_Name: plant
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3133637733272040679
+--- !u!114 &51301391542984333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4435423769968220516}
         m_TargetAssemblyTypeName: PlantGrowBeh, Assembly-CSharp
-        m_MethodName: triggerSwap
+        m_MethodName: triggerLoop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -172,25 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b4b75bc09bf3249a63e9eebbc24a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endEve:
-    m_PersistentCalls:
-      m_Calls: []
-  harvestEve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 6f5fb3b58f4c1fb4b8d3bc53f8ea077a, type: 2}
-        m_TargetAssemblyTypeName: inventData, Assembly-CSharp
-        m_MethodName: addNew
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: plantData, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   defaultMesh: {fileID: -1760711487321341110, guid: d0ffdbbcc71789d4aa6ca13b885cdd44,
     type: 3}
-  workingVis: {fileID: 997143431618108738}
+  plrInv: {fileID: 11400000, guid: 6f5fb3b58f4c1fb4b8d3bc53f8ea077a, type: 2}

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: flower
   m_EditorClassIdentifier: 
-  seedMesh: {fileID: -176295881450834709, guid: f2acdc1d9933d624eb5cd6a0eaf7ebd4,
+  pltMesh: {fileID: -2234555996635838280, guid: f6458851507ef4a40bd39043c1b4d914,
     type: 3}
-  finMesh: {fileID: -2234555996635838280, guid: f6458851507ef4a40bd39043c1b4d914,
-    type: 3}
+  mat1: {fileID: -9117483709511198939, guid: f6458851507ef4a40bd39043c1b4d914, type: 3}
+  mat2: {fileID: 6407905733916077036, guid: f6458851507ef4a40bd39043c1b4d914, type: 3}
+  mat3: {fileID: 474761548000704790, guid: f6458851507ef4a40bd39043c1b4d914, type: 3}
   growTime: 0.5
   waterNeed: 100
   unlocked: 1
