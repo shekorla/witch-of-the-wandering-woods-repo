@@ -3,7 +3,17 @@ guid: 707af6855d34c5d478843a772d9e2f8c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt
+    second: {fileID: 2100000, guid: cd7292a4bffcd9b4cb986ac92e2e0cc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass
+    second: {fileID: 2100000, guid: 222cbc8d0a5bd474fa236dc1b3bd2bd0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
+using System.Collections.Generic;
+
 
 [RequireComponent(typeof(MeshFilter))]
 public class PlantGrowBeh : MonoBehaviour
@@ -8,20 +10,18 @@ public class PlantGrowBeh : MonoBehaviour
     public plantData flag;
     public inventData plrInv;
     public Material dirtMat;
-    
-    public List<Material> mats;
-    
+
     private WaitForSeconds delay;
     private plantData myInfo;
     private int currentWet=0;
     private float growPercent = 0, size;
     private string state="empty" ;
     private MeshFilter Vis;
-    private MeshRenderer Ren;
+    private Renderer Ren;
 
     public void Awake() {//set up everything we need
         Vis=GetComponent<MeshFilter>();
-        Ren = GetComponent<MeshRenderer>();
+        Ren = GetComponent<Renderer>();
     }
 
     
@@ -58,7 +58,7 @@ public class PlantGrowBeh : MonoBehaviour
         delay=new WaitForSeconds(myInfo.growTime);
         changeVis("plant");
         growPercent = 0;
-        size = (0.1f);
+        size = (0.001f);
         transform.localScale = new Vector3(size, size, size);
         state="working";
     }
@@ -72,19 +72,16 @@ public class PlantGrowBeh : MonoBehaviour
 
     public void changeVis(string which)
     {
-        mats.clear();
         if (which=="flag")
         {
             Vis.mesh = flag.pltMesh;
-            mats.add(flag.mat1, flag.mat2, flag.mat3);
-            Ren.SetMaterials(mats);
+            Ren.sharedMaterials=flag.mats;
         }
 
         if (which=="plant")
         {
             Vis.mesh = myInfo.pltMesh;
-            mats.add(myInfo.mat1, myInfo.mat2, myInfo.mat3);
-            Ren.SetMaterials(mats);
+            Ren.sharedMaterials=myInfo.mats;
         }
 
         if (which == "dirt")
@@ -92,7 +89,12 @@ public class PlantGrowBeh : MonoBehaviour
             Ren.material = dirtMat;
         }
     }
-    
+
+    private void OnApplicationQuit()
+    {
+        Resources.UnloadUnusedAssets();
+    }
+
     IEnumerator plantGrow()//loop for increasing size and checking values
     {
         while (growPercent<100)

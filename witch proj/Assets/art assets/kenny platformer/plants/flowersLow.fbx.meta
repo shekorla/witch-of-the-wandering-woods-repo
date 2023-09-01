@@ -3,7 +3,27 @@ guid: f2acdc1d9933d624eb5cd6a0eaf7ebd4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 7d2f83159e235dc43822b2b81b8f2a53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass
+    second: {fileID: 2100000, guid: e72a19154102225418dde59af24ca1a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: heart
+    second: {fileID: 2100000, guid: 424e2fba4024a9f45b98d23387ee316e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: snow
+    second: {fileID: 2100000, guid: c46a2acbb9a96dd44956199eaaf92b54, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

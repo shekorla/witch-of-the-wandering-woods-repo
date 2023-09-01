@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pltMesh: {fileID: -2088611232839375908, guid: 064baa4a933c9f947a2159a1c0849ad1,
     type: 3}
-  mat1: {fileID: -6126091556477775235, guid: 064baa4a933c9f947a2159a1c0849ad1, type: 3}
-  mat2: {fileID: 6407905733916077036, guid: 064baa4a933c9f947a2159a1c0849ad1, type: 3}
-  mat3: {fileID: 0}
-  mat4: {fileID: 0}
+  mats:
+  - {fileID: 2100000, guid: 646e323cd15b7704c9a3b936c17fac19, type: 2}
+  - {fileID: 2100000, guid: f582c86d5233e3d498feca09640e1bef, type: 2}
   growTime: 1
   waterNeed: 20
   unlocked: 0
