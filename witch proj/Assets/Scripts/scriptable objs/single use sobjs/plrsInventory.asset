@@ -15,7 +15,7 @@ MonoBehaviour:
   cropsList:
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  - {fileID: 11400000, guid: 87643e82229944a42af9890b628e3452, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   seedsList:
@@ -23,5 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  - {fileID: 11400000, guid: 87643e82229944a42af9890b628e3452, type: 2}
   money: 0
   currentSeed: {fileID: 11400000, guid: 87643e82229944a42af9890b628e3452, type: 2}
