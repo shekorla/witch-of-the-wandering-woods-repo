@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
+  m_Name: earth
+  m_EditorClassIdentifier: 
+  pltMesh: {fileID: -6111968623699455513, guid: 7bb0fa6f25f280849a8bdd4cba4c1f4f,
+    type: 3}
+  mats:
+  - {fileID: -1177965591000774205, guid: 7bb0fa6f25f280849a8bdd4cba4c1f4f, type: 3}
+  growTime: 0
+  waterNeed: 0
+  unlocked: 0
+  plantName: mandrake
+  plantVal: 0
+  plantSprite: {fileID: 0}
