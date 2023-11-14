@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: light
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: 2767166391408605682, guid: f288f2932200ee24cb3988484e108f63, type: 3}
-  mats:
-  - {fileID: -2502766688446761690, guid: f288f2932200ee24cb3988484e108f63, type: 3}
+  pltVis: {fileID: 3013464090244478396, guid: cbd22355bcdd66642b45b72467e271ea, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: sunflower
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: 47707d30527f0f64bb19254fb78daf9d, type: 2}
+  dryMat: {fileID: 0}

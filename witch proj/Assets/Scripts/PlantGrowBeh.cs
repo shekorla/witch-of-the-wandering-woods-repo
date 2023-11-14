@@ -7,22 +7,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(MeshFilter))]
 public class PlantGrowBeh : MonoBehaviour
 {
-    public plantData flag;
+    public plantData empty;
     public inventData plrInv;
-    public Material dirtMat;
+    public Material dryMat;
+    public GameObject Vis;
 
     private WaitForSeconds delay;
     private plantData myInfo;
     private int currentWet=0;
     private float growPercent = 0, size;
     private string state="empty" ;
-    private MeshFilter Vis;
     private Renderer Ren;
-
-    public void Awake() {//set up everything we need
-        Vis=GetComponent<MeshFilter>();
-        Ren = GetComponent<Renderer>();
-    }
 
     
     public void triggerLoop()
@@ -46,7 +41,7 @@ public class PlantGrowBeh : MonoBehaviour
 
     public void emptyPlot()
     {
-        changeVis("flag");
+        changeVis("empty");
         growPercent = 0;
         size = (1f);
         transform.localScale = new Vector3(size, size, size);
@@ -65,28 +60,30 @@ public class PlantGrowBeh : MonoBehaviour
     
     public void beenWatered()//pick back up when watered
     {
-        changeVis("plant");
+        changeVis("watered");
         currentWet = myInfo.waterNeed;
         StartCoroutine(plantGrow());
     }
 
     public void changeVis(string which)
     {
-        if (which=="flag")
+        if (which=="empty")
         {
-            Vis.mesh = flag.pltMesh;
-            Ren.sharedMaterials=flag.mats;
+            Vis = empty.pltVis;
         }
 
         if (which=="plant")
         {
-            Vis.mesh = myInfo.pltMesh;
-            Ren.sharedMaterials=myInfo.mats;
+            Vis = myInfo.pltVis;
         }
 
-        if (which == "dirt")
+        if (which=="dry")
         {
-            Ren.material = dirtMat;
+            //put something here to make plant look dry
+        }
+        if (which=="watered")
+        {
+            //put something here to make plant look not dry
         }
     }
 
@@ -107,7 +104,7 @@ public class PlantGrowBeh : MonoBehaviour
             }
             else//stop growing when dry
             {
-                changeVis("dirt");
+                changeVis("dry");
                 break;
             }
             size = (growPercent / 100);

@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: earth
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: -6111968623699455513, guid: 7bb0fa6f25f280849a8bdd4cba4c1f4f,
-    type: 3}
-  mats:
-  - {fileID: -1177965591000774205, guid: 7bb0fa6f25f280849a8bdd4cba4c1f4f, type: 3}
+  pltVis: {fileID: 5752169000355292811, guid: 5f1ee9a204ef61a4ebcb8ffb8842b930, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: mandrake
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: 46394ca1ee10c5c49acae8b4c386346d, type: 2}
+  dryMat: {fileID: 0}

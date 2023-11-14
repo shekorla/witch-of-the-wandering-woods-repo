@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: dark
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: 5680064010059787381, guid: 314f8095b006baf41a2627aed2267c9a, type: 3}
-  mats:
-  - {fileID: 2798127302951283202, guid: 314f8095b006baf41a2627aed2267c9a, type: 3}
+  pltVis: {fileID: 1621127652147939030, guid: 04d176bcd3422bc4392156d31594bc7a, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: moonflower
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: cf3570ac6ecf6394c9120696d3fdf8a7, type: 2}
+  dryMat: {fileID: 0}

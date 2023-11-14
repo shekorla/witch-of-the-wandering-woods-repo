@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: lightning
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: 3474647653122377067, guid: 9278d185825d4354d81967eee393f83e, type: 3}
-  mats:
-  - {fileID: 8666092938435389376, guid: 9278d185825d4354d81967eee393f83e, type: 3}
+  pltVis: {fileID: 7785571131931850714, guid: ebd04d881ca51db4bb0bfe0d81c38c5c, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: jewel orcid
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: 000ac7bfef8b6f5438f5fff1a5da9bab, type: 2}
+  dryMat: {fileID: 0}

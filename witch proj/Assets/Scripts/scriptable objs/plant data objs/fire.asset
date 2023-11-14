@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: fire
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: -4728887496425296429, guid: 20bfadba87b5a854dad07a28442a727c,
-    type: 3}
-  mats:
-  - {fileID: 1333782765159113558, guid: 20bfadba87b5a854dad07a28442a727c, type: 3}
+  pltVis: {fileID: 776347608962953118, guid: 966bd275e004aed4d9c83a3720ab96d1, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: torchflower
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: e1647cf864c0e7346a3a6aa1d37ae2d0, type: 2}
+  dryMat: {fileID: 0}
