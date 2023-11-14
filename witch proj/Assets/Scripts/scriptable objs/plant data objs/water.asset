@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: water
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: 2494185979427425891, guid: 4d91f6c5135f8044eaa06230ac017a41, type: 3}
-  mats:
-  - {fileID: -8873475072088634391, guid: 4d91f6c5135f8044eaa06230ac017a41, type: 3}
+  pltVis: {fileID: 1657426698814022501, guid: 53b6c80df516b974c905861668a9a105, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: willow
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: 8a589d637e34e6246a41865ca5ac5e55, type: 2}
+  dryMat: {fileID: 0}

@@ -3,8 +3,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class plantData : ScriptableObject
 {
-    public Mesh pltMesh; //seed mesh will scale as grow, then stay as fin
-    public Material[] mats;
+    public GameObject pltVis; //seed mesh will scale as grow, then stay as fin
     public float growTime;//seconds between grow/water checks 1.66= need 60seconds to grow
     public int waterNeed;//number of checks before it needs water again 20<x<100
     // 100=needs water once   20=needs water 5 times   5=needs water 20 times   100/x= number of waters
@@ -12,4 +11,5 @@ public class plantData : ScriptableObject
     public string plantName;
     public int plantVal;
     public Sprite plantSprite;
+    public Material liveMat, dryMat;
 }

@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
   m_Name: wind
   m_EditorClassIdentifier: 
-  pltMesh: {fileID: -5618422539440301527, guid: fda3f52f2446edc438c48291949d31d9,
-    type: 3}
-  mats:
-  - {fileID: 2313107181003856592, guid: fda3f52f2446edc438c48291949d31d9, type: 3}
+  pltVis: {fileID: 6120064032429390770, guid: d5da307add5adff439400e4e3f57d998, type: 3}
   growTime: 0
   waterNeed: 0
   unlocked: 0
   plantName: reed
   plantVal: 0
   plantSprite: {fileID: 0}
+  liveMat: {fileID: 2100000, guid: 53ae0b809df80fa4584d864f189f2d8e, type: 2}
+  dryMat: {fileID: 0}
