@@ -142,7 +142,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170404338829224790}
-  m_Mesh: {fileID: 46604309741045415, guid: 4baf854345bf2c644b3ffad87f133ed8, type: 3}
+  m_Mesh: {fileID: -4815266390828892834, guid: 4baf854345bf2c644b3ffad87f133ed8, type: 3}
 --- !u!23 &7215299993373363941
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bbe0305b570db074a876070be6dd7b86,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbe0305b570db074a876070be6dd7b86,
         type: 3}
