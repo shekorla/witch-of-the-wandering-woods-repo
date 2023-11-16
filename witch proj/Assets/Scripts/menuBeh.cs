@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class menuBeh : MonoBehaviour
 {
     public GameObject menuCanvas;
-    public plantData currentSeed;
+    public inventData currentSeed;
 
     private void Awake()
     {

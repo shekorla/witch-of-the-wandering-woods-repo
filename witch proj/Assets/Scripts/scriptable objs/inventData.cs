@@ -7,7 +7,12 @@ public class inventData : ScriptableObject
     public List<plantData> cropsList,seedsList;
     public float money;
     public plantData currentSeed;
+    public string heldTool;
 
+    public void newTool(string name)
+    {
+        heldTool = name;
+    }
     public void sell(plantData item)
     {
         if (cropsList.Contains(item))

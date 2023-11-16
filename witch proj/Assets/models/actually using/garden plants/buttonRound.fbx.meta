@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: dirt
+    second: {fileID: 2100000, guid: 9c685ba972a2c5b4896ea5b5d25c8308, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: heart
     second: {fileID: 2100000, guid: 9c685ba972a2c5b4896ea5b5d25c8308, type: 2}
   - first:

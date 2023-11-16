@@ -8,10 +8,14 @@ public class onTriggerEve : MonoBehaviour
         GetComponent<Collider>().isTrigger=true;
     }
 
-    public UnityEvent triggerEnterEvent,triggerExitEvent;
+    public UnityEvent triggerEnterEvent,triggerExitEvent,PlayerEvent;
     private void OnTriggerEnter(Collider other)
     {
         triggerEnterEvent.Invoke();
+        if (other.CompareTag("Player"))
+        {
+            PlayerEvent.Invoke();
+        }
     }
     private void OnTriggerExit(Collider other)
     {

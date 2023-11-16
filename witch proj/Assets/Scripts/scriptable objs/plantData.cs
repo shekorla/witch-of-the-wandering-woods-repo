@@ -11,5 +11,4 @@ public class plantData : ScriptableObject
     public string plantName;
     public int plantVal;
     public Sprite plantSprite;
-    public Material liveMat, dryMat;
 }

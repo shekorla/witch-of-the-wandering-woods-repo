@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: _defaultMat
-    second: {fileID: 2100000, guid: a5c4ea2902eacf54eae37b0ad84a30fd, type: 2}
+    second: {fileID: 2100000, guid: 8142f578f5237dc4c8323ef1ea161bd8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: heart
-    second: {fileID: 2100000, guid: f582c86d5233e3d498feca09640e1bef, type: 2}
+    second: {fileID: 2100000, guid: d9bf6a7573f104d41bad382ddf1bf463, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: metal
-    second: {fileID: 2100000, guid: d50639c03d96a2946a9ecb188b1fe6a9, type: 2}
+    second: {fileID: 2100000, guid: 8142f578f5237dc4c8323ef1ea161bd8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

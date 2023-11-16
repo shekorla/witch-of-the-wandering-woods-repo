@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: _defaultMat
-    second: {fileID: 2100000, guid: e2c6a4e01aa5b684d83732ce1606472d, type: 2}
+    second: {fileID: 2100000, guid: c064b15b953c6d24cb0c523f07f3890f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,12 +18,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: heart
-    second: {fileID: 2100000, guid: f582c86d5233e3d498feca09640e1bef, type: 2}
+    second: {fileID: 2100000, guid: 8ebeb1884ead83d4b8f2738ece81de06, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: snow
-    second: {fileID: 2100000, guid: d3e5d3d1a60cc7440b453f63693d6299, type: 2}
+    second: {fileID: 2100000, guid: b7bab55e5f5da04428fc05a9271575a9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
