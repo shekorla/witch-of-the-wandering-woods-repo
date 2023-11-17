@@ -6,6 +6,9 @@ public class PlantGrowBeh : MonoBehaviour
     public inventData plrInv;
     public GameObject Vis;
     public bool plotLocked;
+    public AudioClip[] digNoises,harvest;
+    public AudioClip  glow, water;
+    public float vol;
 
     private WaitForSeconds delay;
     private plantData myInfo;
@@ -27,7 +30,9 @@ public class PlantGrowBeh : MonoBehaviour
         if (plotLocked==false)
         {
             if (state=="empty") {
-                if (plrInv.canPlant()) {
+                if (plrInv.canPlant())
+                {
+                    AudioSource.PlayClipAtPoint(digNoises[Random.Range(0, digNoises.Length)], transform.position,vol);
                     myInfo = plrInv.currentSeed;
                     modifyVis(myInfo);
                     currentWet = myInfo.waterNeed;
@@ -51,6 +56,7 @@ public class PlantGrowBeh : MonoBehaviour
         {
             if (plrInv.heldTool=="water") {
                 modifyVis(myInfo);
+                AudioSource.PlayClipAtPoint(water, transform.position,vol);
                 currentWet = myInfo.waterNeed;
                 StartCoroutine(plantGrow());
             } 
@@ -58,6 +64,7 @@ public class PlantGrowBeh : MonoBehaviour
     }
     public void emptyPlot()
     {
+        AudioSource.PlayClipAtPoint(harvest[Random.Range(0, harvest.Length)], transform.position,vol);
         var em =glitter.emission;
         em.enabled = false;
         modifyVis(empty);
@@ -101,6 +108,7 @@ public class PlantGrowBeh : MonoBehaviour
             modifyVis(myInfo);//reset with stable visuals
             Vis.transform.localScale = new Vector3(1, 1, 1);
             state="done";
+            AudioSource.PlayClipAtPoint(glow, transform.position,vol);
             var em =glitter.emission;
             em.enabled = true;
         }

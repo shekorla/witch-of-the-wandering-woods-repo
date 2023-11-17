@@ -3,7 +3,12 @@ guid: 99b4b75bc09bf3249a63e9eebbc24a3d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - empty: {instanceID: 0}
+  - plrInv: {instanceID: 0}
+  - Vis: {instanceID: 0}
+  - glow: {fileID: 8300000, guid: adc17b04136448049a994629b15b0dd4, type: 3}
+  - water: {fileID: 8300000, guid: d72903d551cb2a54fb1abef719d32e5f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
