@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
@@ -298,6 +299,11 @@ namespace StarterAssets
             // reset the jump timeout timer
             //_jumpTimeoutDelta = JumpTimeout;
         //}
+        
+        public void swapRoom(string dest)
+        {
+            SceneManager.LoadScene(dest);
+        }
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;

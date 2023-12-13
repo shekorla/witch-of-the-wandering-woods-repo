@@ -1,25 +1,40 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class menuBeh : MonoBehaviour
 {
     public GameObject menuCanvas;
-    public inventData currentSeed;
-
+    public Button menuButton;
+    
+    private UnityAction menuOpenAct;
+    private float counter;
     private void Awake()
     {
         menuCanvas.SetActive(false);
     }
 
-    public void openInvent()
+    private void Start()
     {
-        Time.timeScale = 0f;
-        menuCanvas.SetActive(true);
+        //Fetch the Button and Renderer components from the GameObject
+        menuButton = GetComponent<Button>();
+
+        menuOpenAct += openInvent;
+        menuButton.onClick.AddListener(menuOpenAct);
     }
 
-    public void closeInvent()
+    public void openInvent()
     {
-        Time.timeScale = 1f;
-        menuCanvas.SetActive(false);
+        if (menuCanvas.activeSelf==false)
+        {
+            Time.timeScale = 0f;
+            menuCanvas.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            menuCanvas.SetActive(false);
+        }
     }
     
 }

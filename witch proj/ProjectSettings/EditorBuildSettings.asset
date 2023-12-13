@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Garden/gardenRoom.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
+  - enabled: 1
+    path: Assets/Scenes/lower floor/lower floor.unity
+    guid: 91cb9f073fcd34246a7873fae6009f8c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fb1a4dba2bcc1cb439b2f862ecdc0a88,
       type: 2}
