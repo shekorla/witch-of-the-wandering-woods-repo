@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: mandrake
   plantVal: 0
+  plantCost: 110
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: 46394ca1ee10c5c49acae8b4c386346d, type: 2}
-  dryMat: {fileID: 0}

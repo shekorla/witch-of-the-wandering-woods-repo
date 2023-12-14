@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: jewel orcid
   plantVal: 0
+  plantCost: 30
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: 000ac7bfef8b6f5438f5fff1a5da9bab, type: 2}
-  dryMat: {fileID: 0}

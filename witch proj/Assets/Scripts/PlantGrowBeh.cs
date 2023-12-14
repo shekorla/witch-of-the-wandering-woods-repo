@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
+
 public class PlantGrowBeh : MonoBehaviour
 {
     public plantData empty;
     public inventData plrInv;
     public GameObject Vis;
-    public bool plotLocked;
+    public bool plotLocked,me;
     public AudioClip[] digNoises,harvest;
     public AudioClip  glow, water;
     public float vol;
@@ -23,10 +27,41 @@ public class PlantGrowBeh : MonoBehaviour
         var em =glitter.emission;
             em.enabled = false;
         modifyVis(empty);
+        plrInv.useToolA.AddListener(useTool);
     }
 
-    public void triggerLoop()
+
+    public void yesMe()
     {
+        me = true;
+    }
+
+    public void notMe()
+    {
+        me = false;
+    }
+    void useTool ()
+    {
+        if (me==true)
+        {
+            if (plrInv.heldTool.namey=="watering can")
+            {
+                wetBB();
+            }
+            if (plrInv.heldTool.namey=="shovel")
+            {
+                plantHere();
+            }
+            if (plrInv.heldTool.namey=="sickle")
+            {
+                cutDown();
+            }
+        }
+    }
+
+    private void plantHere()
+    {
+        Debug.Log("planting");
         if (plotLocked==false)
         {
             if (state=="empty") {
@@ -45,24 +80,30 @@ public class PlantGrowBeh : MonoBehaviour
                 } 
             }
         }
-        if (state=="done") {//give player item and reset dirt patch
-            if (plrInv.heldTool=="cut") {
-                plrInv.harvest(myInfo);
-                emptyPlot();
-            }
-        }
+    }
 
-        if (currentWet<=0)
-        {
-            if (plrInv.heldTool=="water") {
-                modifyVis(myInfo);
-                AudioSource.PlayClipAtPoint(water, transform.position,vol);
-                currentWet = myInfo.waterNeed;
-                StartCoroutine(plantGrow());
-            } 
+    private void cutDown()
+    {
+        Debug.Log("cut");
+        if (state=="done") {//give player item and reset dirt patch
+            plrInv.harvest(myInfo);
+            emptyPlot();
         }
     }
-    public void emptyPlot()
+
+    private void wetBB()
+    {
+        Debug.Log("wet");
+        if (currentWet<=0)
+        {
+            modifyVis(myInfo); 
+            AudioSource.PlayClipAtPoint(water, transform.position,vol);
+            currentWet = myInfo.waterNeed;
+            StartCoroutine(plantGrow());
+        }
+    }
+
+    private void emptyPlot()
     {
         AudioSource.PlayClipAtPoint(harvest[Random.Range(0, harvest.Length)], transform.position,vol);
         var em =glitter.emission;

@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,24 +6,33 @@ public class buttonConfig : MonoBehaviour
 {
     public plantData myData;
     public inventData playerIn;
-    public string myType;//wether it is a 'seed' button or a 'crop' button
-    private float currNum;
+    private int seedNum, cropNum;
     private Text changeMe;
-    public Image changeImage;
 
     private void Awake()
     {
-        currNum = playerIn.howManySeeds(myData, myType);
-        changeMe=GetComponentInChildren<Text>();
-        //changeImage = GetComponentInChildren<Image>();
-        string numtotxt = currNum.ToString();
-        changeMe.text = (myData.plantName.ToString() +": "+ numtotxt);
-        changeImage.sprite = myData.plantSprite;
+        buttons();
     }
 
-    public void changeSeed()
+    private void LateUpdate()
     {
-        playerIn.currentSeed = myData;
+        buttons();
+    }
+
+    private void buttons()
+    {
+        seedNum = playerIn.howManySeeds(myData, "seed");
+        cropNum = playerIn.howManySeeds(myData, "crops");
+        foreach (var child in GetComponentsInChildren<Text>())
+        {
+            if (child.name=="change text")
+            {
+                changeMe = child;
+            }
+        }
+        string Snumtotxt = seedNum.ToString();
+        string Cnumtotxt = cropNum.ToString();
+        changeMe.text = ("seeds: "+ Snumtotxt + Environment.NewLine +"crops: "+ Cnumtotxt);
     }
 
 }

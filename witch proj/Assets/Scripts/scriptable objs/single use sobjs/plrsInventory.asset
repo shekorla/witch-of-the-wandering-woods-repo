@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropsList:
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   seedsList:
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
@@ -23,7 +24,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  money: 0
-  currentSeed: {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  heldTool: water
+  money: 100
+  currentSeed: {fileID: 11400000, guid: 8cc804012a017b24c9ec1786e399a957, type: 2}
+  heldTool: {fileID: 11400000, guid: 9df1b40a596efad4ea30806140c3916a, type: 2}
+  useToolA:
+    m_PersistentCalls:
+      m_Calls: []

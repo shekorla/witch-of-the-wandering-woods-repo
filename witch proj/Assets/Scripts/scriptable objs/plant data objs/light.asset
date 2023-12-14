@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: sunflower
   plantVal: 0
+  plantCost: 120
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: 47707d30527f0f64bb19254fb78daf9d, type: 2}
-  dryMat: {fileID: 0}

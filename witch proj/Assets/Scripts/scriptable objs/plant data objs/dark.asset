@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: moonflower
   plantVal: 0
+  plantCost: 150
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: cf3570ac6ecf6394c9120696d3fdf8a7, type: 2}
-  dryMat: {fileID: 0}

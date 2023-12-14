@@ -1,14 +1,10 @@
-﻿using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using Debug = UnityEngine.Debug;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
 
-/* Note: animations are called via the controller for both the character and capsule using animator null checks
- */
-//edited from unity third person controler sample
+// Note: animations are called via the controller for both the character and capsule using animator null checks//edited from unity third person controler sample
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
@@ -43,8 +39,8 @@ namespace StarterAssets
         public float Gravity = -15.0f;
         
         [Space(10)]
-        [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
-        public float JumpTimeout = 0.50f;
+        [Tooltip("Time required to pass before being able to use a tool again. Set to 0f to instantly again")]
+        public float toolTimeout = 0.50f;
 
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
@@ -65,8 +61,10 @@ namespace StarterAssets
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
-
         
+        //tool doodads
+        public GameObject toolSpot;
+        public inventData plrInvent;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -81,7 +79,7 @@ namespace StarterAssets
         private float _terminalVelocity = 53.0f;
 
         // timeout deltatime
-        private float _jumpTimeoutDelta;
+        private float _toolTimeoutDelta;
         private float _fallTimeoutDelta;
         
         // animation IDs
@@ -102,6 +100,7 @@ namespace StarterAssets
         
         private bool _hasAnimator;
         
+        private GameObject baby;
 
         private void Awake()
         {
@@ -128,7 +127,7 @@ namespace StarterAssets
             AssignAnimationIDs();
 
             // reset our timeouts on start
-            _jumpTimeoutDelta = JumpTimeout;
+            _toolTimeoutDelta = toolTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
 
@@ -138,6 +137,7 @@ namespace StarterAssets
             
             gravityCheck();
             Move();
+            useTool();
         }
 
         private void LateUpdate()
@@ -274,35 +274,42 @@ namespace StarterAssets
             }
         }
 
-        // private void useTool
-        //{
-            /*// Jump
-            if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-        {
-            // the square root of H * -2 * G = how much velocity needed to reach desired height
-            _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-            // update animator if using character
-            if (_hasAnimator)
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void useTool()
+        { 
+            if (_input.interact && _toolTimeoutDelta <= 0.0f)
             {
-                _animator.SetBool(_animIDJump, true);
+                plrInvent.useToolA.Invoke();
+                // update animator if using character
+                if (_hasAnimator)//change this for tool
+                {
+                  //_animator.SetBool(_animIDtool, true);
+                }
+            }
+            //toll timeout
+            if (_toolTimeoutDelta >= 0.0f)
+            {
+                _toolTimeoutDelta -= Time.deltaTime;
+            }
+            else
+            {
+                //reset the tool timeout timer
+                _toolTimeoutDelta = toolTimeout;
+                _input.interact = false;
             }
         }
-
-        // jump timeout
-        if (_jumpTimeoutDelta >= 0.0f)
-        {
-             _jumpTimeoutDelta -= Time.deltaTime;
-        }*/
-        //else
-        //{
-            // reset the jump timeout timer
-            //_jumpTimeoutDelta = JumpTimeout;
-        //}
         
         public void swapRoom(string dest)
         {
             SceneManager.LoadScene(dest);
+        }
+
+        public void swapTool(toolData thing)
+        {
+            Destroy(baby);
+            plrInvent.heldTool = thing;
+            baby=Instantiate(thing.prefab, toolSpot.transform.position, Quaternion.identity);
+            baby.transform.parent = toolSpot.transform;
         }
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {

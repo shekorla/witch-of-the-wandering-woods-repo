@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: reed
   plantVal: 0
+  plantCost: 75
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: 53ae0b809df80fa4584d864f189f2d8e, type: 2}
-  dryMat: {fileID: 0}

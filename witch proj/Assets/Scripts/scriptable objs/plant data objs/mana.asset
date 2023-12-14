@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: marigold
   plantVal: 20
+  plantCost: 5
   plantSprite: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
-  liveMat: {fileID: 2100000, guid: 1c295742b36f25046a03ee221d09045f, type: 2}
-  dryMat: {fileID: 0}

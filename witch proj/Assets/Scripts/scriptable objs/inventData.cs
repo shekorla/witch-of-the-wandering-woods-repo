@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu]
 public class inventData : ScriptableObject
@@ -7,18 +8,15 @@ public class inventData : ScriptableObject
     public List<plantData> cropsList,seedsList;
     public float money;
     public plantData currentSeed;
-    public string heldTool;
-
-    public void newTool(string name)
-    {
-        heldTool = name;
-    }
+    public toolData heldTool;
+    public UnityEvent useToolA;
+    
     public void sell(plantData item)
     {
         if (cropsList.Contains(item))
         {
             cropsList.Remove(item);
-            money = +item.plantVal;
+            money += item.plantVal;
         }
     }
 
@@ -27,9 +25,13 @@ public class inventData : ScriptableObject
         cropsList.Add(item);
     }
 
-    public void addSeed(plantData item)//when buy seeds add to list
+    public void buySeed(plantData item)//when buy seeds add to list
     {
-        seedsList.Add(item);
+        if (money>=item.plantCost)
+        {
+            seedsList.Add(item);
+            money -= item.plantCost;
+        }
     }
 
     public bool canPlant()//need to have seeds to plant seeds
@@ -45,9 +47,9 @@ public class inventData : ScriptableObject
         }
     }
 
-    public float howManySeeds(plantData countThis, string buttonType)
+    public int howManySeeds(plantData countThis, string buttonType)
     {
-        float number = 0;
+        int number = 0;
         if (buttonType=="seed") {
             foreach (plantData listItem in seedsList)
             {
@@ -67,5 +69,30 @@ public class inventData : ScriptableObject
             }
         }
         return number;
+    }
+
+    public void changeTool(toolData swap)
+    {
+        heldTool = swap;
+    }
+
+    public void changeSeed(plantData mine)
+    {
+        currentSeed = mine;
+    }
+
+    public void moneyChange(int value)
+    {
+        money += value;
+    }
+
+    public void pauseTime()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void resumeTime()
+    {
+        Time.timeScale = 1;
     }
 }

@@ -53,6 +53,7 @@ MonoBehaviour:
   plrInv: {fileID: 11400000, guid: 6f5fb3b58f4c1fb4b8d3bc53f8ea077a, type: 2}
   Vis: {fileID: 4170404338829224790}
   plotLocked: 0
+  me: 0
   digNoises:
   - {fileID: 8300000, guid: 5aa1861a90346094fab984562ead96d4, type: 3}
   - {fileID: 8300000, guid: f18140faac119eb40b25580cb40e6ca7, type: 3}
@@ -70,6 +71,9 @@ MonoBehaviour:
   glow: {fileID: 8300000, guid: adc17b04136448049a994629b15b0dd4, type: 3}
   water: {fileID: 8300000, guid: d72903d551cb2a54fb1abef719d32e5f, type: 3}
   vol: 0.4
+  listener:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &7669516768859748666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -97,13 +101,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1604371773167540969}
+        m_TargetAssemblyTypeName: PlantGrowBeh, Assembly-CSharp
+        m_MethodName: yesMe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   triggerExitEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1604371773167540969}
         m_TargetAssemblyTypeName: PlantGrowBeh, Assembly-CSharp
-        m_MethodName: triggerLoop
+        m_MethodName: notMe
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

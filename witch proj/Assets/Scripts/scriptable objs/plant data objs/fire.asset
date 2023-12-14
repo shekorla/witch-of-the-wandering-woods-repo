@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: torchflower
   plantVal: 0
+  plantCost: 50
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: e1647cf864c0e7346a3a6aa1d37ae2d0, type: 2}
-  dryMat: {fileID: 0}

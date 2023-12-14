@@ -18,6 +18,5 @@ MonoBehaviour:
   unlocked: 0
   plantName: willow
   plantVal: 0
+  plantCost: 10
   plantSprite: {fileID: 0}
-  liveMat: {fileID: 2100000, guid: 8a589d637e34e6246a41865ca5ac5e55, type: 2}
-  dryMat: {fileID: 0}
