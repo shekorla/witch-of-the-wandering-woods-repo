@@ -15,7 +15,7 @@ MonoBehaviour:
   pltVis: {fileID: 1590997835404328236, guid: b5f145cd487d3f3489e7ab3fb8c3ad36, type: 3}
   growTime: 1
   waterNeed: 20
-  unlocked: 0
+  unlocked: 1
   plantName: marigold
   plantVal: 20
   plantCost: 5

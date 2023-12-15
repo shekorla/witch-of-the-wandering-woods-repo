@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: water
   m_EditorClassIdentifier: 
   pltVis: {fileID: 1657426698814022501, guid: 53b6c80df516b974c905861668a9a105, type: 3}
-  growTime: 0
-  waterNeed: 0
-  unlocked: 0
+  growTime: 0.2
+  waterNeed: 50
+  unlocked: 1
   plantName: willow
-  plantVal: 0
+  plantVal: 30
   plantCost: 10
   plantSprite: {fileID: 0}

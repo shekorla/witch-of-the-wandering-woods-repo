@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: dark
   m_EditorClassIdentifier: 
   pltVis: {fileID: 1621127652147939030, guid: 04d176bcd3422bc4392156d31594bc7a, type: 3}
-  growTime: 0
-  waterNeed: 0
-  unlocked: 0
+  growTime: 0.2
+  waterNeed: 50
+  unlocked: 1
   plantName: moonflower
-  plantVal: 0
+  plantVal: 200
   plantCost: 150
   plantSprite: {fileID: 0}

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: earth
   m_EditorClassIdentifier: 
   pltVis: {fileID: 5752169000355292811, guid: 5f1ee9a204ef61a4ebcb8ffb8842b930, type: 3}
-  growTime: 0
-  waterNeed: 0
-  unlocked: 0
+  growTime: 0.2
+  waterNeed: 50
+  unlocked: 1
   plantName: mandrake
-  plantVal: 0
+  plantVal: 150
   plantCost: 110
   plantSprite: {fileID: 0}

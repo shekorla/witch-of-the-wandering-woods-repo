@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: fire
   m_EditorClassIdentifier: 
   pltVis: {fileID: 776347608962953118, guid: 966bd275e004aed4d9c83a3720ab96d1, type: 3}
-  growTime: 0
-  waterNeed: 0
+  growTime: 0.2
+  waterNeed: 50
   unlocked: 0
   plantName: torchflower
-  plantVal: 0
+  plantVal: 100
   plantCost: 50
   plantSprite: {fileID: 0}

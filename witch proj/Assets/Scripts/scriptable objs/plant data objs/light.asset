@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: light
   m_EditorClassIdentifier: 
   pltVis: {fileID: 3013464090244478396, guid: cbd22355bcdd66642b45b72467e271ea, type: 3}
-  growTime: 0
-  waterNeed: 0
-  unlocked: 0
+  growTime: 0.2
+  waterNeed: 50
+  unlocked: 1
   plantName: sunflower
-  plantVal: 0
+  plantVal: 200
   plantCost: 120
   plantSprite: {fileID: 0}

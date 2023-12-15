@@ -61,7 +61,7 @@ public class PlantGrowBeh : MonoBehaviour
 
     private void plantHere()
     {
-        Debug.Log("planting");
+        //Debug.Log("planting");
         if (plotLocked==false)
         {
             if (state=="empty") {
@@ -84,7 +84,7 @@ public class PlantGrowBeh : MonoBehaviour
 
     private void cutDown()
     {
-        Debug.Log("cut");
+        //Debug.Log("cut");
         if (state=="done") {//give player item and reset dirt patch
             plrInv.harvest(myInfo);
             emptyPlot();
@@ -93,7 +93,7 @@ public class PlantGrowBeh : MonoBehaviour
 
     private void wetBB()
     {
-        Debug.Log("wet");
+        //Debug.Log("wet");
         if (currentWet<=0)
         {
             modifyVis(myInfo); 

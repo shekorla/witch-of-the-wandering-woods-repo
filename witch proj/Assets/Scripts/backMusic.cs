@@ -6,16 +6,20 @@ using Random = UnityEngine.Random;
 public class backMusic : MonoBehaviour
 {
     public AudioClip[] tracks;
-    public float volSc;
-
+    
     private WaitForSeconds len;
     private AudioSource playMe;
+    private float volSc;
     private void Awake()
     {
         playMe = GetComponent<AudioSource>();
         StartCoroutine(waiting());
     }
 
+    public void volCheck(volumeBoss volBoss)
+    {
+        volSc = volBoss.mastVal * volBoss.musicVal;
+    }
     private void startTrack()
     {
         int num = Random.Range(0, tracks.Length);

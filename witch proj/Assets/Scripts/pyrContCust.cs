@@ -33,7 +33,6 @@ namespace StarterAssets
         
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
-        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
@@ -77,6 +76,7 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        private float FootstepAudioVolume = 0.5f;
 
         // timeout deltatime
         private float _toolTimeoutDelta;
@@ -94,14 +94,15 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private cusInput _input;
-        private GameObject _mainCamera;
+        private GameObject _mainCamera, baby;
 
         private const float _threshold = 0.01f;
-        
         private bool _hasAnimator;
-        
-        private GameObject baby;
 
+        public void volChange(volumeBoss boss)
+        {
+            FootstepAudioVolume = boss.mastVal*boss.sfxVal;
+        }
         private void Awake()
         {
             // get a reference to our main camera
@@ -309,6 +310,7 @@ namespace StarterAssets
             Destroy(baby);
             plrInvent.heldTool = thing;
             baby=Instantiate(thing.prefab, toolSpot.transform.position, Quaternion.identity);
+            baby.transform.rotation = toolSpot.transform.rotation;
             baby.transform.parent = toolSpot.transform;
         }
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

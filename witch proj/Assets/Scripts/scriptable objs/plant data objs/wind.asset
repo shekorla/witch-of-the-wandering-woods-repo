@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: wind
   m_EditorClassIdentifier: 
   pltVis: {fileID: 6120064032429390770, guid: d5da307add5adff439400e4e3f57d998, type: 3}
-  growTime: 0
-  waterNeed: 0
+  growTime: 0.2
+  waterNeed: 50
   unlocked: 0
   plantName: reed
-  plantVal: 0
+  plantVal: 100
   plantCost: 75
   plantSprite: {fileID: 0}

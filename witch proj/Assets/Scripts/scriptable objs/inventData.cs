@@ -59,7 +59,7 @@ public class inventData : ScriptableObject
                 }
             }
         }
-        else if (buttonType=="seed") {
+        else if (buttonType=="crops") {
             foreach (plantData listItem in cropsList)
             {
                 if (listItem==countThis)
