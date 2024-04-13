@@ -4755,7 +4755,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1c89e41b1c34ef64fb7d541600a3d87c, type: 2}
+      objectReference: {fileID: 9100000, guid: 92c7734662bfea24d95f7acfb5bfe711, type: 2}
     - target: {fileID: 5866666021909216657, guid: f2a9548f55c70af49a140e030f3e8fc4,
         type: 3}
       propertyPath: m_CullingMode
@@ -8199,7 +8199,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 701297009}
-  - component: {fileID: 701297008}
   - component: {fileID: 701297010}
   m_Layer: 0
   m_Name: faye root
@@ -8208,22 +8207,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!111 &701297008
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701297007}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0c0cc7903d16ba54cbef5ed398b2fa54, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 0c0cc7903d16ba54cbef5ed398b2fa54, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!4 &701297009
 Transform:
   m_ObjectHideFlags: 0
@@ -8248,9 +8231,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701297007}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9c7feaaf016e4c842ad67ff1b2fa624c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 92c7734662bfea24d95f7acfb5bfe711, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
