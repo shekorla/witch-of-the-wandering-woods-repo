@@ -16,4 +16,8 @@ MonoBehaviour:
   run: 5
   swim: 3
   hp: 7
-  avalibleActions: 000000000100000002000000000000000400000003000000
+  avalibleActions:
+  - jump
+  - walk
+  - walk
+  - idle

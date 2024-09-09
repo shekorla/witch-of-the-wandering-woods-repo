@@ -1,11 +1,9 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-
 public enum SlimeAnimationState { Idle,Walk,Jump,Attack,Damage}
 public class EnemyAi : MonoBehaviour
 {
-    public creatData MyData;
 
     public Face faces;
     public GameObject SmileBody;
@@ -37,7 +35,6 @@ public class EnemyAi : MonoBehaviour
         m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
         agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
         SetFace(faces.WalkFace);
-        StartCoroutine(aiLoop());
     }
     public void CancelGoNextDestination() =>CancelInvoke(nameof(WalkToNextDestination));
 
@@ -45,21 +42,22 @@ public class EnemyAi : MonoBehaviour
     {
         faceMaterial.SetTexture("_MainTex", tex);
     }
-    IEnumerator aiLoop()
+    void Update()
     {
-        currentState = MyData.randAct();
+        
+
         switch (currentState)
         {
             case SlimeAnimationState.Idle:
                 
-                //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) ;
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) return;
                 StopAgent();
                 SetFace(faces.Idleface);
                 break;
 
             case SlimeAnimationState.Walk:
 
-                //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"));
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Walk")) return;
 
                 agent.isStopped = false;
                 agent.updateRotation = true;
@@ -79,14 +77,14 @@ public class EnemyAi : MonoBehaviour
 
                         currentState = SlimeAnimationState.Idle;
                     }
+                       
                 }
                 //Patroll
                 else
                 {
-                    if (waypoints[0] != null)
-                    {
-                        agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
-                    }
+                    if (waypoints[0] == null) return;
+                   
+                     agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
 
                     // agent reaches the destination
                     if (agent.remainingDistance < agent.stoppingDistance)
@@ -106,21 +104,18 @@ public class EnemyAi : MonoBehaviour
 
             case SlimeAnimationState.Jump:
 
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
-                {
-                    StopAgent();
-                    SetFace(faces.jumpFace);
-                    animator.SetTrigger("Jump");
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")) return;
 
-                    //Debug.Log("Jumping");
-                }
+                StopAgent();
+                SetFace(faces.jumpFace);
+                animator.SetTrigger("Jump");
+
+                //Debug.Log("Jumping");
                 break;
-
-                
 
             case SlimeAnimationState.Attack:
 
-                //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) ;
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) return;
                 StopAgent();
                 SetFace(faces.attackFace);
                 animator.SetTrigger("Attack");
@@ -131,9 +126,9 @@ public class EnemyAi : MonoBehaviour
             case SlimeAnimationState.Damage:
 
                // Do nothing when animtion is playing
-             //  if(animator.GetCurrentAnimatorStateInfo(0).IsName("Damage0")
-              //      || animator.GetCurrentAnimatorStateInfo(0).IsName("Damage1")
-              //      || animator.GetCurrentAnimatorStateInfo(0).IsName("Damage2") ) ;
+               if(animator.GetCurrentAnimatorStateInfo(0).IsName("Damage0")
+                    || animator.GetCurrentAnimatorStateInfo(0).IsName("Damage1")
+                    || animator.GetCurrentAnimatorStateInfo(0).IsName("Damage2") ) return;
 
                 StopAgent();
                 animator.SetTrigger("Damage");
@@ -144,7 +139,6 @@ public class EnemyAi : MonoBehaviour
                 break;
        
         }
-        yield return new WaitForSeconds(1);//wait a full second than repeat
 
     }
 
