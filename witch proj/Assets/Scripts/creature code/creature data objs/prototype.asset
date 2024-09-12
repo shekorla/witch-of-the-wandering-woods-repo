@@ -18,6 +18,9 @@ MonoBehaviour:
   hp: 7
   avalibleActions:
   - jump
-  - walk
-  - walk
   - idle
+  - walk
+  - walk
+  - walk
+  - walk
+  - walk
