@@ -7,13 +7,15 @@ using UnityEngine.InputSystem;
 	public class cusInput : MonoBehaviour
 	{
 		[Header("Character Input Values")]
-		public Vector2 move;
-		public Vector2 look;
-		public bool interact;
-		public bool sprint;
+		public Vector2 move, look;
+		public bool interact, jump, sprint,crouch;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
+		
+		[Header("Mouse Cursor Settings")]
+		public bool cursorLocked;
+		public bool cursorInputForLook ;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
@@ -24,8 +26,14 @@ using UnityEngine.InputSystem;
 		public void OnLook(InputValue value)
 		{
 			LookInput(value.Get<Vector2>());
+			//put code to swap from arrow keys to mouse look later
 		}
 
+		public void OnJump(InputValue value)
+		{
+			JumpInput(value.isPressed);
+		}
+		
 		public void OnInteract(InputValue value)
 		{
 			InteractInput(value.isPressed);
@@ -34,6 +42,10 @@ using UnityEngine.InputSystem;
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
+		}
+		public void OnCrouch(InputValue value)
+		{
+			CrouchInput(value.isPressed);
 		}
 #endif
 
@@ -48,6 +60,11 @@ using UnityEngine.InputSystem;
 			look = newLookDirection;
 		}
 
+		public void JumpInput(bool newJumpState)
+		{
+			jump = newJumpState;
+		}
+		
 		public void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
@@ -56,6 +73,27 @@ using UnityEngine.InputSystem;
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		public void CrouchInput(bool newCrouchState)
+		{
+			if (crouch)
+			{
+				crouch = false;
+			}
+			else
+			{
+				crouch = true;
+			}
+			//crouch = newCrouchState;
+		}
+		private void OnApplicationFocus(bool hasFocus)
+		{
+			SetCursorState(cursorLocked);
+		}
+
+		private void SetCursorState(bool newState)
+		{
+			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
 	

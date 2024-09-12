@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -24,23 +25,27 @@ namespace StarterAssets
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
         
-        [Tooltip("How fast the camera turns")]
-        [Range(0.1f, 1f)]
-        public float camSpd = 0.5f;
-        
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
         
+        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
-
+        
+        [Space(10)]
+        [Tooltip("The height the player can jump")]
+        public float JumpHeight = 1.2f;
+        
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
         
-        [Space(10)]
+        [Header("timeouts")] 
         [Tooltip("Time required to pass before being able to use a tool again. Set to 0f to instantly again")]
-        public float toolTimeout = 0.50f;
-
+        public float toolTimeout = 0.50f; //yard tool code
+        
+        [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
+        public float JumpTimeout = 0.50f;
+        
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
@@ -61,8 +66,20 @@ namespace StarterAssets
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
         
-        //tool doodads
-        public GameObject toolSpot;
+        [Tooltip("How far in degrees can you move the camera up")]
+        public float TopClamp = 70.0f;
+
+        [Tooltip("How far in degrees can you move the camera down")]
+        public float BottomClamp = -30.0f;
+
+        [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
+        public float CameraAngleOverride = 0.0f;
+
+        [Tooltip("For locking the camera position on all axis")]
+        public bool LockCameraPosition = false;
+        
+        //tool doodads my code
+        public GameObject toolSpot;//yard tool code
         public inventData plrInvent;
 
         // cinemachine
@@ -76,17 +93,19 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
-        private float FootstepAudioVolume = 0.5f;
 
         // timeout deltatime
-        private float _toolTimeoutDelta;
+        private float _toolTimeoutDelta; //yard tool code
+        private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
         
         // animation IDs
         private int _animIDSpeed;
         private int _animIDGrounded;
+        private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
@@ -94,12 +113,25 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private cusInput _input;
-        private GameObject _mainCamera, baby;
+        private GameObject _mainCamera, baby; //yard tool code
 
         private const float _threshold = 0.01f;
+        
         private bool _hasAnimator;
 
-        public void volChange(volumeBoss boss)
+        private bool IsCurrentDeviceMouse
+        {
+            get
+            {
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+                return _playerInput.currentControlScheme == "KeyboardMouse";
+#else
+				return false;
+#endif
+            }
+        }
+        
+        public void volChange(volumeBoss boss)//can this be done better using audio blending groups?
         {
             FootstepAudioVolume = boss.mastVal*boss.sfxVal;
         }
@@ -128,7 +160,8 @@ namespace StarterAssets
             AssignAnimationIDs();
 
             // reset our timeouts on start
-            _toolTimeoutDelta = toolTimeout;
+            _toolTimeoutDelta = toolTimeout;//yard tool code
+            _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
 
@@ -136,9 +169,11 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
             
-            gravityCheck();
+            JumpAndGravity();
+            GroundedCheck();
             Move();
             useTool();
+            
         }
 
         private void LateUpdate()
@@ -149,25 +184,47 @@ namespace StarterAssets
         private void AssignAnimationIDs()
         {
             _animIDSpeed = Animator.StringToHash("Speed");
+            _animIDGrounded = Animator.StringToHash("Grounded");
+            _animIDJump = Animator.StringToHash("Jump");
+            _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
         
+        private void GroundedCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
+                transform.position.z);
+            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
+                QueryTriggerInteraction.Ignore);
+
+            // update animator if using character
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDGrounded, Grounded);
+            }
+        }
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
-            if (_input.look.x>0)//turn right
+            if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                _cinemachineTargetYaw -= _input.look.x*camSpd;
-            }
-            if (_input.look.x<0)//turn left
-            {
-                _cinemachineTargetYaw -= _input.look.x*camSpd;
-            }
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(0f,
-                _cinemachineTargetYaw, 0.0f);
-        }
+                //Don't multiply mouse input by Time.deltaTime;
+                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
+                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
+                //_cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+                //the rotation isnt working??
+            }
+
+            // clamp our rotations so our values are limited 360 degrees
+            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+            //_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+            // Cinemachine will follow this target
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(0f,
+                _cinemachineTargetYaw, 0.0f);//x used to say target pitch+angle overide
+        }
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
@@ -236,22 +293,49 @@ namespace StarterAssets
             }
         }
         
-        private void gravityCheck()
+        private void JumpAndGravity()
         {
             if (Grounded)
             {
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
 
+                // update animator if using character
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDJump, false);
+                    _animator.SetBool(_animIDFreeFall, false);
+                }
+                
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
                 }
-                
+                // Jump
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                {
+                    // the square root of H * -2 * G = how much velocity needed to reach desired height
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                    // update animator if using character
+                    if (_hasAnimator)
+                    {
+                        _animator.SetBool(_animIDJump, true);
+                    }
+                }
+
+                // jump timeout
+                if (_jumpTimeoutDelta >= 0.0f)
+                {
+                    _jumpTimeoutDelta -= Time.deltaTime;
+                }
             }
             else
             {
+                // reset the jump timeout timer
+                _jumpTimeoutDelta = JumpTimeout;
+                
                 // fall timeout
                 if (_fallTimeoutDelta >= 0.0f)
                 {
@@ -267,6 +351,8 @@ namespace StarterAssets
                 }
                 // if we are not grounded, do not use item
                 _input.interact = false;
+                // if we are not grounded, do not jump
+                _input.jump = false;
             }
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
             if (_verticalVelocity < _terminalVelocity)
@@ -275,8 +361,15 @@ namespace StarterAssets
             }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
-        private void useTool()
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        {
+            if (lfAngle < -360f) lfAngle += 360f;
+            if (lfAngle > 360f) lfAngle -= 360f;
+            return Mathf.Clamp(lfAngle, lfMin, lfMax);
+        }
+        
+        // ReSharper disable Unity.PerformanceAnalysis//////what is this??
+        private void useTool()//yard tool code
         { 
             if (_input.interact && _toolTimeoutDelta <= 0.0f)
             {
@@ -287,7 +380,7 @@ namespace StarterAssets
                   //_animator.SetBool(_animIDtool, true);
                 }
             }
-            //toll timeout
+            //tool timeout
             if (_toolTimeoutDelta >= 0.0f)
             {
                 _toolTimeoutDelta -= Time.deltaTime;
@@ -297,6 +390,15 @@ namespace StarterAssets
                 //reset the tool timeout timer
                 _toolTimeoutDelta = toolTimeout;
                 _input.interact = false;
+            }
+
+            if (_input.crouch)
+            {
+                CinemachineCameraTarget.transform.localPosition = new Vector3(0,0,0);
+            }
+            else
+            {
+                CinemachineCameraTarget.transform.localPosition = new Vector3(0,1,0);
             }
         }
         
@@ -312,12 +414,6 @@ namespace StarterAssets
             baby=Instantiate(thing.prefab, toolSpot.transform.position, Quaternion.identity);
             baby.transform.rotation = toolSpot.transform.rotation;
             baby.transform.parent = toolSpot.transform;
-        }
-        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-        {
-            if (lfAngle < -360f) lfAngle += 360f;
-            if (lfAngle > 360f) lfAngle -= 360f;
-            return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
         
         private void OnFootstep(AnimationEvent animationEvent)
