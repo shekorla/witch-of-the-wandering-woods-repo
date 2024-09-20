@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: wistle mat
+  m_Shader: {fileID: -6465566751694194690, guid: 37ea467b473019f4cbc56d0399d68cf2,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_25f86ac076e44d58810e8fd6cb00f6cb: 2
+    - Vector1_cc4a5ffa6c2a4b25864d9c1b31223a19: 0.315
+    m_Colors:
+    - Color_5174b16af8794bc58a221c063c51516d: {r: 0.6886792, g: 0.08056242, b: 0.08056242,
+        a: 0}
+    - Color_87d210476b8644eb9eb3039e473e73eb: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

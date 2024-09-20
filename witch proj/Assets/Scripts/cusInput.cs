@@ -8,7 +8,8 @@ using UnityEngine.InputSystem;
 	{
 		[Header("Character Input Values")]
 		public Vector2 move, look;
-		public bool interact, jump, sprint,crouch;
+
+		public bool interact, jump, sprint, crouch, whistle;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -20,61 +21,22 @@ using UnityEngine.InputSystem;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
-			MoveInput(value.Get<Vector2>());
+			move = value.Get<Vector2>();
 		}
-
 		public void OnLook(InputValue value)
 		{
-			LookInput(value.Get<Vector2>());
+			look = value.Get<Vector2>();
 			//put code to swap from arrow keys to mouse look later
 		}
-
 		public void OnJump(InputValue value)
 		{
-			JumpInput(value.isPressed);
+			jump = value.isPressed;
 		}
-		
-		public void OnInteract(InputValue value)
-		{
-			InteractInput(value.isPressed);
-		}
-
 		public void OnSprint(InputValue value)
 		{
-			SprintInput(value.isPressed);
+			sprint = value.isPressed;
 		}
 		public void OnCrouch(InputValue value)
-		{
-			CrouchInput(value.isPressed);
-		}
-#endif
-
-
-		public void MoveInput(Vector2 newMoveDirection)
-		{
-			move = newMoveDirection;
-		} 
-
-		public void LookInput(Vector2 newLookDirection)
-		{
-			look = newLookDirection;
-		}
-
-		public void JumpInput(bool newJumpState)
-		{
-			jump = newJumpState;
-		}
-		
-		public void InteractInput(bool newInteractState)
-		{
-			interact = newInteractState;
-		}
-
-		public void SprintInput(bool newSprintState)
-		{
-			sprint = newSprintState;
-		}
-		public void CrouchInput(bool newCrouchState)
 		{
 			if (crouch)
 			{
@@ -84,15 +46,31 @@ using UnityEngine.InputSystem;
 			{
 				crouch = true;
 			}
-			//crouch = newCrouchState;
 		}
-		private void OnApplicationFocus(bool hasFocus)
+		public void OnWhistle(InputValue value)
 		{
+			WhistleInput(value.isPressed);
+		}
+		public void OnInteract(InputValue value)
+		{
+			InteractInput(value.isPressed);
+		}
+#endif
+
+		public void WhistleInput(bool newWhistleState)
+		{
+			whistle = newWhistleState;
+		}
+		public void InteractInput(bool newInteractState)
+		{
+			interact = newInteractState;
+		}
+		
+		//use these for zoom in/focus ability
+		private void OnApplicationFocus(bool hasFocus) {
 			SetCursorState(cursorLocked);
 		}
-
-		private void SetCursorState(bool newState)
-		{
+		private void SetCursorState(bool newState) {
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
