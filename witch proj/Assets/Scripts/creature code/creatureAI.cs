@@ -126,14 +126,23 @@ public class creatureAI: MonoBehaviour
         }
         return finalPosition;
     }
-
-    private void OnTriggerEnter(Collider other)//clean up later? is code for finding obj in a sphere more efficent than collison?
+    
+    private void OnCollisionEnter(Collision other)//clean up later? is code for finding obj in a sphere more efficent than collison?
     {
-        if (other.name=="whistle range")
+        if (other.gameObject.name=="whistle range")
         {
             StopCoroutine(waiting());
             currentState = "called";
             freeRoam = false;
+            aiLoop();
+        }
+
+        if (other.gameObject.name=="interact range")
+        {
+            currentState = "idle emote";
+            StopAgent();
+            freeRoam = false;
+            StopCoroutine(waiting());
             aiLoop();
         }
     }
