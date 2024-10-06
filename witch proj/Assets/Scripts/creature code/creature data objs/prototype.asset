@@ -20,7 +20,7 @@ MonoBehaviour:
   - jump
   - idle
   - walk
-  - walk
-  - walk
+  - called
+  - idle emote
   - walk
   - walk

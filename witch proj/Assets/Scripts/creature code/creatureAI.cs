@@ -12,7 +12,7 @@ public class creatureAI: MonoBehaviour
     public GameObject SmileBody;
     public bool freeRoam;
     
-    private string currentState;
+    public string currentState;
     private Animator animator;
     private NavMeshAgent agent;
     private Material faceMaterial;
@@ -52,6 +52,7 @@ public class creatureAI: MonoBehaviour
                 animator.SetFloat(Speed, 0f);
                 delay = 2;//debugging
                 //delay = Random.Range(10, 30);
+                
                 break;
 
             case "walk":
@@ -88,6 +89,7 @@ public class creatureAI: MonoBehaviour
                 //delay = Random.Range(10, 30);
                 break;
         }
+        freeRoam = true;//reset for next loop unless we get interupted
         StartCoroutine(waiting());
     }
 
@@ -95,19 +97,23 @@ public class creatureAI: MonoBehaviour
     {
         if (agent.pathPending)
         {
+            if (currentState=="called")
+            {
+                agent.SetDestination(player.transform.position);//update if player moves
+            }
             yield return new WaitUntil(hasStopped);//wait for it to be done moving
         }
         else
         {
             yield return new WaitForSecondsRealtime(delay);
         }
-        freeRoam = true;//this only gets called if the loop fully completes (not interrupted by a command)
         aiLoop();
     }
     private bool hasStopped()//bool to check if we are still walking
     {
         if (agent.remainingDistance<agent.stoppingDistance)
         {
+            freeRoam = true;
             return true;
         }
         else
@@ -127,30 +133,28 @@ public class creatureAI: MonoBehaviour
         return finalPosition;
     }
     
-    private void OnCollisionEnter(Collision other)//clean up later? is code for finding obj in a sphere more efficent than collison?
+    private void OnTriggerEnter(Collider other)//clean up later? is code for finding obj in a sphere more efficent than collison?
     {
+        StopAgent();
         if (other.gameObject.name=="whistle range")
         {
-            StopCoroutine(waiting());
             currentState = "called";
-            freeRoam = false;
             aiLoop();
         }
-
         if (other.gameObject.name=="interact range")
         {
             currentState = "idle emote";
-            StopAgent();
-            freeRoam = false;
-            StopCoroutine(waiting());
             aiLoop();
         }
+        Debug.Log(currentState);
     }
 
     private void StopAgent()//force stop that resets things
     {
+        freeRoam = false;
         agent.isStopped = true;
         agent.updateRotation = false;
+        StopCoroutine(waiting());
     }
     
                     // Animation/visuals code
