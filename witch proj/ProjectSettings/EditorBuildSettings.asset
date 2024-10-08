@@ -6,14 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Garden/gardenRoom.unity
+    path: Assets/Scenes/test room.unity
+    guid: eeca10dd483fc224a826ef9c3db775e9
+  - enabled: 1
+    path: Assets/Scenes/Garden/garden.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
   - enabled: 1
-    path: Assets/Scenes/lower floor/lower floor.unity
+    path: Assets/Scenes/shop/shop.unity
     guid: 91cb9f073fcd34246a7873fae6009f8c
   - enabled: 1
-    path: Assets/Scenes/pasture/pastScene.unity
+    path: Assets/Scenes/backyard/backyard.unity
     guid: cdd9b7a0736b42541bb682028b9a350f
+  - enabled: 1
+    path: Assets/Scenes/upstairs/upstairs.unity
+    guid: 06e636b6b6151244385c4d0c4931717c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fb1a4dba2bcc1cb439b2f862ecdc0a88,
       type: 2}
