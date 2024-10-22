@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/GeniiStats")]
 public class creatData : ScriptableObject
 {
     public int fly, run, swim, hp;

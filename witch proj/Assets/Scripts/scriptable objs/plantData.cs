@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Plant")]
 public class plantData : ScriptableObject
 {
     public GameObject pltVis; //seed mesh will scale as grow, then stay as fin

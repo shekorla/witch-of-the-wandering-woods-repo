@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Tool")]
 public class toolData : ScriptableObject
 {
     public GameObject prefab;

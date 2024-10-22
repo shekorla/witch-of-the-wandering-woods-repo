@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Inventory")]
 public class inventData : ScriptableObject
 {
     public List<plantData> cropsList,seedsList;
