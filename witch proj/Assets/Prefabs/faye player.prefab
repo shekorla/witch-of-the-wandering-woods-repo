@@ -487,8 +487,10 @@ MonoBehaviour:
   SprintSpeed: 10
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
+  JumpHeight: 1.2
+  Gravity: -15
   FootstepAudioVolume: 0.5
-  LandingAudioClip: {fileID: 0}
+  LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
   FootstepAudioClips:
   - {fileID: 8300000, guid: eda7c48a1420d22499b5d5c8377e5a75, type: 3}
   - {fileID: 8300000, guid: 0a5a2750c1ff4a14985fdb7b22541dca, type: 3}
@@ -505,9 +507,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4611024c04cfc28449f78dacef6cfc80, type: 3}
   - {fileID: 8300000, guid: 4329c976d3e9ca943a037d5c175662c6, type: 3}
   - {fileID: 8300000, guid: 50c0c287758b95845a12355c278698d5, type: 3}
-  JumpHeight: 1.2
-  Gravity: -15
-  toolTimeout: 0.5
+  actionTimeout: 0.5
   JumpTimeout: 0.5
   FallTimeout: 0.15
   Grounded: 1
@@ -517,12 +517,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   CinemachineCameraTarget: {fileID: 8396358135334555012}
-  TopClamp: 70
-  BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
   toolSpot: {fileID: 9064990856789599850}
   plrInvent: {fileID: 11400000, guid: 6f5fb3b58f4c1fb4b8d3bc53f8ea077a, type: 2}
+  action: 0
 --- !u!114 &6702417091078754688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,6 +540,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   crouch: 0
+  whistle: 0
   analogMovement: 0
   cursorLocked: 0
   cursorInputForLook: 0

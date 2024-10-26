@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -66,9 +68,9 @@ public class plrContCust : MonoBehaviour
         
     [Header("origional code")]
     //tool doodads my code
-    public GameObject toolSpot;//yard tool code
+    public GameObject toolSpot,pickup;//yard tool code
     public inventData plrInvent;
-    public bool action;
+    public bool action,holding;
 
     // cinemachine
     private float _cinemachineTargetYaw;
@@ -146,6 +148,8 @@ public class plrContCust : MonoBehaviour
         _jumpTimeoutDelta = JumpTimeout;
         _fallTimeoutDelta = FallTimeout;
         action = true;
+        pickup = null;
+        holding = false;
     }
 
     private void Update()
@@ -372,16 +376,45 @@ public class plrContCust : MonoBehaviour
                 }
                 action = false;
                 _input.interact = false;
+                
+                if (pickup!=null)//if pickup exists
+                {
+                    if (holding==false)///and we are not holding anything
+                    {//pick it up
+                        //add code here to change anim
+                        pickup.GetComponentInChildren<CapsuleCollider>().enabled=false;
+                        pickup.GetComponentInChildren<PositionConstraint>().constraintActive=true;
+                        action = false;
+                        _input.interact = false;
+                        holding = true;
+                    }else//set it down
+                    {
+                        //use animation to move toolspot just infront of us so its not in us
+                        pickup.GetComponentInChildren<PositionConstraint>().constraintActive=false;
+                        var floorspot = toolSpot.transform.position;
+                        floorspot.y -= 1;//better code later
+                        floorspot.z -= 2;
+                        pickup.transform.position = floorspot;
+                        pickup.GetComponentInChildren<CapsuleCollider>().enabled=true;
+                        holding = false;
+                        noPickup();
+                    }
+                }
+                
             }
 
             //whistle control-needs animation added
             if (_input.whistle && _actionTimeoutDelta <= 0.0f)
             {
-                whistleObj.GetComponentInChildren<Animation>().Play();
+                if (whistleObj!=null)
+                {
+                    whistleObj.GetComponentInChildren<Animation>().Play();
+                }
                 action = false;
                 _input.whistle = false;
             }
         }
+        
         
         //delay after doing something before doing something again
         if (_actionTimeoutDelta >= 0.0f)
@@ -408,7 +441,22 @@ public class plrContCust : MonoBehaviour
         baby.transform.rotation = toolSpot.transform.rotation;
         baby.transform.parent = toolSpot.transform;
     }
-        
+
+    public void swapHolding(GameObject newthing)
+    {
+        if (pickup==null&&holding==false)
+        {
+            pickup = newthing;
+        }
+    }
+
+    public void noPickup()
+    {
+        if (holding==false)
+        {
+            pickup = null;
+        }
+    }
     private void OnFootstep(AnimationEvent animationEvent)
     {
         if (animationEvent.animatorClipInfo.weight > 0.5f)
