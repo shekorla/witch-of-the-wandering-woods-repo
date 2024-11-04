@@ -11,4 +11,23 @@ public class creatData : ScriptableObject
     {
         return avalibleActions[Random.Range(0,avalibleActions.Count-1)];
     }
+
+    public void changeStat(string stat, int amt)
+    {
+        switch (stat)
+        {case"fly":
+                fly += amt;
+            break;
+        case "run":
+            run+= amt;
+            break;
+        case "swim":
+            swim+= amt;
+            break;
+        case "hp":
+            hp+= amt;
+            break;
+            
+        }
+    }
 }

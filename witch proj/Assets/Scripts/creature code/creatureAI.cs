@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class creatureAI: MonoBehaviour
@@ -31,7 +33,7 @@ public class creatureAI: MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         faceMaterial = SmileBody.GetComponent<Renderer>().materials[1];
         player = GameObject.Find("faye player");
-        
+        freeRoam = true;
         //start thinking
         aiLoop();
     }
@@ -71,36 +73,15 @@ public class creatureAI: MonoBehaviour
                 delay = 2;//debugging
                 //delay = Random.Range(5, 15);
                 break;
-            
-            case "called"://called over to the player
-                animator.SetFloat(Speed, 0.5f);
-                agent.isStopped = false;
-                agent.updateRotation = true;
-                agent.SetDestination(player.transform.position);
-                SetFace(faces.sillyF);
-                //dont need to change delay because the wait until works
-                break;
-       
-            case "idle emote"://stop and look at player etc
-                StopAgent();
-                SetFace(faces.HappyF);
-                animator.SetFloat(Speed, 0f);
-                delay = 2;//debugging
-                //delay = Random.Range(10, 30);
-                break;
         }
-        freeRoam = true;//reset for next loop unless we get interupted
         StartCoroutine(waiting());
     }
+    
 
     IEnumerator waiting()//this is just the delay timer
     {
         if (agent.pathPending)
         {
-            if (currentState=="called")
-            {
-                agent.SetDestination(player.transform.position);//update if player moves
-            }
             yield return new WaitUntil(hasStopped);//wait for it to be done moving
         }
         else
@@ -108,6 +89,20 @@ public class creatureAI: MonoBehaviour
             yield return new WaitForSecondsRealtime(delay);
         }
         aiLoop();
+    }
+
+    IEnumerator quickLoop()
+    {
+        if (currentState=="called")
+        {
+            agent.SetDestination(player.transform.position);//update if player moves
+        }
+        if (currentState=="listen")
+        {
+            StopAgent();
+            yield break;
+        }
+        yield return new WaitForSecondsRealtime(1);
     }
     private bool hasStopped()//bool to check if we are still walking
     {
@@ -132,29 +127,53 @@ public class creatureAI: MonoBehaviour
         }
         return finalPosition;
     }
-    
-    private void OnTriggerEnter(Collider other)//clean up later? is code for finding obj in a sphere more efficent than collison?
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("carryable"))
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public void called()
+    {
+        currentState = "called";
+        animator.SetFloat(Speed, 0.5f);
+        agent.isStopped = false;
+        agent.updateRotation = true;
+        agent.SetDestination(player.transform.position);
+        SetFace(faces.sillyF);
+        quickLoop();
+    }
+
+    public void listen()
+    {
+        currentState = "listen";
         StopAgent();
-        if (other.gameObject.name=="whistle range")
-        {
-            currentState = "called";
-            aiLoop();
-        }
-        if (other.gameObject.name=="interact range")
-        {
-            currentState = "idle emote";
-            aiLoop();
-        }
-        Debug.Log(currentState);
+        SetFace(faces.HappyF);
+        animator.SetFloat(Speed, 0f);
+        delay = 2;//debugging
+        //delay = Random.Range(10, 30);
     }
 
     private void StopAgent()//force stop that resets things
     {
-        freeRoam = false;
         agent.isStopped = true;
         agent.updateRotation = false;
         StopCoroutine(waiting());
+        StopCoroutine(quickLoop());
+    }
+
+    public void RoamIsFree()
+    {
+        freeRoam = true;
+        aiLoop();
+    }
+
+    public void RoamIsLocked()
+    {
+        freeRoam = false;
     }
     
                     // Animation/visuals code
@@ -169,5 +188,11 @@ public class creatureAI: MonoBehaviour
     void SetFace(Texture tex)
     {
         faceMaterial.SetTexture(MainTex, tex);
+    }
+    
+    ////stat code is down here
+    public void changeStats(string a, int b)
+    {
+        MyData.changeStat(a,b);
     }
 }

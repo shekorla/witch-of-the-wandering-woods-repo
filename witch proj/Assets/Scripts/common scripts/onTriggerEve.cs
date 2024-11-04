@@ -8,7 +8,7 @@ public class onTriggerEve : MonoBehaviour
         GetComponent<Collider>().isTrigger=true;
     }
 
-    public UnityEvent triggerEnterEvent,triggerExitEvent,PlayerEvent;
+    public UnityEvent triggerEnterEvent,triggerExitEvent,PlayerEvent,PlayerExitEvent;
     private void OnTriggerEnter(Collider other)
     {
         triggerEnterEvent.Invoke();
@@ -20,6 +20,10 @@ public class onTriggerEve : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         triggerExitEvent.Invoke();
+        if (other.CompareTag("Player"))
+        {
+            PlayerExitEvent.Invoke();
+        }
     }
 
 }

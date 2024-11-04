@@ -1,6 +1,9 @@
-﻿using Cinemachine;
+﻿using System.Runtime.CompilerServices;
+using Cinemachine;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -103,6 +106,9 @@ public class plrContCust : MonoBehaviour
     
     //custom code items
     private GameObject baby, whistleObj;//yard tool code
+    [SerializeField] private int layer = 6;
+    private int layermask;
+    
     
     private bool IsCurrentDeviceMouse
     {
@@ -150,6 +156,8 @@ public class plrContCust : MonoBehaviour
         action = true;
         pickup = null;
         holding = false;
+
+        layermask = (1 << layer);
     }
 
     private void Update()
@@ -409,6 +417,12 @@ public class plrContCust : MonoBehaviour
                 if (whistleObj!=null)
                 {
                     whistleObj.GetComponentInChildren<Animation>().Play();
+                }
+
+                Collider[] genus = Physics.OverlapSphere(transform.position, 30,layermask);
+                foreach (var buddy in genus)
+                {
+                    buddy.SendMessage("called");
                 }
                 action = false;
                 _input.whistle = false;
