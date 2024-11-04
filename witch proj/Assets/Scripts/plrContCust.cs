@@ -1,11 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using Cinemachine;
-using UnityEditorInternal;
-using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 //edited from the unity starter asset 3d platformer stuff
@@ -71,9 +65,9 @@ public class plrContCust : MonoBehaviour
         
     [Header("origional code")]
     //tool doodads my code
-    public GameObject toolSpot,pickup;//yard tool code
+    public GameObject toolSpot;//yard tool code
     public inventData plrInvent;
-    public bool action,holding;
+    public bool action;
 
     // cinemachine
     private float _cinemachineTargetYaw;
@@ -154,8 +148,6 @@ public class plrContCust : MonoBehaviour
         _jumpTimeoutDelta = JumpTimeout;
         _fallTimeoutDelta = FallTimeout;
         action = true;
-        pickup = null;
-        holding = false;
 
         layermask = (1 << layer);
     }
@@ -373,43 +365,28 @@ public class plrContCust : MonoBehaviour
         }
 
         if (action)
-        {    //use tools-needs animation added
+        {    //interact-needs animation added
             if (_input.interact && _actionTimeoutDelta <= 0.0f)
             {   //if button is down
-                plrInvent.useToolA.Invoke();
+                
                 // pulled this from jump section
                 if (_hasAnimator)
                 {
+                    //just a generic tap/grab anim
                     //_animator.SetBool(_animIDtool, true);
+                }
+                Collider[] objs = Physics.OverlapSphere(transform.position, 10);
+                foreach (var item in objs)
+                {
+                    if (item.gameObject.CompareTag("InteractObj"))
+                    {
+                        item.SendMessage("activate");
+                    }
                 }
                 action = false;
                 _input.interact = false;
-                
-                if (pickup!=null)//if pickup exists
-                {
-                    if (holding==false)///and we are not holding anything
-                    {//pick it up
-                        //add code here to change anim
-                        pickup.GetComponentInChildren<CapsuleCollider>().enabled=false;
-                        pickup.GetComponentInChildren<PositionConstraint>().constraintActive=true;
-                        action = false;
-                        _input.interact = false;
-                        holding = true;
-                    }else//set it down
-                    {
-                        //use animation to move toolspot just infront of us so its not in us
-                        pickup.GetComponentInChildren<PositionConstraint>().constraintActive=false;
-                        var floorspot = toolSpot.transform.position;
-                        floorspot.y -= 1;//better code later
-                        floorspot.z -= 2;
-                        pickup.transform.position = floorspot;
-                        pickup.GetComponentInChildren<CapsuleCollider>().enabled=true;
-                        holding = false;
-                        noPickup();
-                    }
-                }
-                
             }
+            //plrInvent.useToolA.Invoke(); tool code
 
             //whistle control-needs animation added
             if (_input.whistle && _actionTimeoutDelta <= 0.0f)
@@ -454,22 +431,6 @@ public class plrContCust : MonoBehaviour
         baby=Instantiate(thing.prefab, toolSpot.transform.position, Quaternion.identity);
         baby.transform.rotation = toolSpot.transform.rotation;
         baby.transform.parent = toolSpot.transform;
-    }
-
-    public void swapHolding(GameObject newthing)
-    {
-        if (pickup==null&&holding==false)
-        {
-            pickup = newthing;
-        }
-    }
-
-    public void noPickup()
-    {
-        if (holding==false)
-        {
-            pickup = null;
-        }
     }
     private void OnFootstep(AnimationEvent animationEvent)
     {
