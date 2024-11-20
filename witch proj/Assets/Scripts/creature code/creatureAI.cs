@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class creatureAI: MonoBehaviour
@@ -45,36 +43,36 @@ public class creatureAI: MonoBehaviour
         if (freeRoam==true)
         {
             currentState = MyData.randAct(); 
-        }
-        switch (currentState)
-        {
-            case "idle":
-                StopAgent();
-                SetFace(faces.basicF);
-                animator.SetFloat(Speed, 0f);
-                delay = 2;//debugging
-                //delay = Random.Range(10, 30);
+            switch (currentState)
+            {
+                case "idle":
+                    StopAgent();
+                    SetFace(faces.basicF);
+                    animator.SetFloat(Speed, 0f);
+                    delay = 2;//debugging
+                    //delay = Random.Range(10, 30);
                 
-                break;
+                    break;
 
-            case "walk":
-                animator.SetFloat(Speed, 0.5f);
-                agent.isStopped = false;
-                agent.updateRotation = true;
-                agent.SetDestination(RandomNavmeshLocation(20));
-                SetFace(faces.HappyF);
-                //dont need to change delay because the wait until works
-                break;
+                case "walk":
+                    animator.SetFloat(Speed, 0.5f);
+                    agent.isStopped = false;
+                    agent.updateRotation = true;
+                    agent.SetDestination(RandomNavmeshLocation(20));
+                    SetFace(faces.HappyF);
+                    //dont need to change delay because the wait until works
+                    break;
 
-            case "jump":
-                StopAgent();
-                SetFace(faces.angyF); 
-                animator.SetFloat(Speed, 1f);
-                delay = 2;//debugging
-                //delay = Random.Range(5, 15);
-                break;
+                case "jump":
+                    StopAgent();
+                    SetFace(faces.angyF); 
+                    animator.SetFloat(Speed, 1f);
+                    delay = 2;//debugging
+                    //delay = Random.Range(5, 15);
+                    break;
+            }
+            StartCoroutine(waiting());
         }
-        StartCoroutine(waiting());
     }
     
 
@@ -128,16 +126,9 @@ public class creatureAI: MonoBehaviour
         return finalPosition;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("carryable"))
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public void called()
     {
+        freeRoam = false;
         currentState = "called";
         animator.SetFloat(Speed, 0.5f);
         agent.isStopped = false;
@@ -150,6 +141,7 @@ public class creatureAI: MonoBehaviour
     public void listen()
     {
         currentState = "listen";
+        freeRoam = false;
         StopAgent();
         SetFace(faces.HappyF);
         animator.SetFloat(Speed, 0f);
@@ -169,11 +161,6 @@ public class creatureAI: MonoBehaviour
     {
         freeRoam = true;
         aiLoop();
-    }
-
-    public void RoamIsLocked()
-    {
-        freeRoam = false;
     }
     
                     // Animation/visuals code
