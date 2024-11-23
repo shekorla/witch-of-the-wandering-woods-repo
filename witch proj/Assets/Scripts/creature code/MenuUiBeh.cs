@@ -14,7 +14,8 @@ public class MenuUiBeh : MonoBehaviour
 
     public void initiation(creatureAI genii)
     {   //move into view
-        this.transform.position = genii.transform.position;
+        transform.position = genii.transform.position;
+        transform.rotation = genii.transform.rotation;
         //change the ui to match pet data
         genDat = genii.whoRU();
         nickName.text = genDat.nickName;
@@ -25,6 +26,6 @@ public class MenuUiBeh : MonoBehaviour
     }
     public void hide()
     {
-        this.transform.position = new Vector3(0,10,0);
+        this.transform.position = new Vector3(0,-10,0);
     }
 }

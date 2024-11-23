@@ -443,11 +443,13 @@ public class plrContCust : MonoBehaviour
     {
         if (lockDown==false) {
             lockDown = true;
+            LockCameraPosition = true;
         }
         else {
             if (lockDown==true)
             {
                 lockDown = false;
+                LockCameraPosition = false;
             }
         }
     }

@@ -16,7 +16,7 @@ MonoBehaviour:
   fly: 47
   run: 27
   swim: 11
-  hp: 6
+  hp: 3
   avalibleActions:
   - jump
   - idle
