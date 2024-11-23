@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: prototype
   m_EditorClassIdentifier: 
   nickName: test
-  fly: 7
-  run: 5
-  swim: 3
-  hp: 7
+  fly: 47
+  run: 27
+  swim: 11
+  hp: 6
   avalibleActions:
   - jump
   - idle

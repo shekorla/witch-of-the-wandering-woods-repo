@@ -5,6 +5,7 @@ using UnityEngine;
 public class creatData : ScriptableObject
 {
     public string nickName;
+    [Range(0,100)]
     public int fly, run, swim, hp;
     public List<string> avalibleActions;//programed options: idle, walk, jump, called, idle emote
     //ideas/want to add: dance, sing

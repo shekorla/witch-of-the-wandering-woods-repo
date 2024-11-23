@@ -67,7 +67,7 @@ public class plrContCust : MonoBehaviour
     //tool doodads my code
     public GameObject toolSpot;//yard tool code
     public inventData plrInvent;
-    public bool action;
+    public bool action, lockDown;
 
     // cinemachine
     private float _cinemachineTargetYaw;
@@ -265,9 +265,12 @@ public class plrContCust : MonoBehaviour
         Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
         // move the player
-        _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                         new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
+        if (lockDown==false)
+        {
+            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            
+        }
         // update animator if using character
         if (_hasAnimator)
         {
@@ -277,64 +280,67 @@ public class plrContCust : MonoBehaviour
     }
     private void JumpAndGravity()
     {
-        if (Grounded)
+        if (lockDown==false)
         {
-            // reset the fall timeout timer
-            _fallTimeoutDelta = FallTimeout;
+            if (Grounded)
+            {
+                // reset the fall timeout timer
+                _fallTimeoutDelta = FallTimeout;
             
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDJump, false);
-                _animator.SetBool(_animIDFreeFall, false);
-            }
-                
-            // stop our velocity dropping infinitely when grounded
-            if (_verticalVelocity < 0.0f)
-            {
-                _verticalVelocity = -2f;
-            }
-            // Jump
-            if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-            {
-                // the square root of H * -2 * G = how much velocity needed to reach desired height
-                _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animIDJump, true);
+                    _animator.SetBool(_animIDJump, false);
+                    _animator.SetBool(_animIDFreeFall, false);
                 }
-            }
-
-            // jump timeout
-            if (_jumpTimeoutDelta >= 0.0f)
-            {
-                _jumpTimeoutDelta -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            // reset the jump timeout timer
-            _jumpTimeoutDelta = JumpTimeout;
                 
-            // fall timeout
-            if (_fallTimeoutDelta >= 0.0f)
-            {
-                _fallTimeoutDelta -= Time.deltaTime;
+                // stop our velocity dropping infinitely when grounded
+                if (_verticalVelocity < 0.0f)
+                {
+                    _verticalVelocity = -2f;
+                }
+                // Jump
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                {
+                    // the square root of H * -2 * G = how much velocity needed to reach desired height
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                    // update animator if using character
+                    if (_hasAnimator)
+                    {
+                        _animator.SetBool(_animIDJump, true);
+                    }
+                }
+
+                // jump timeout
+                if (_jumpTimeoutDelta >= 0.0f)
+                {
+                    _jumpTimeoutDelta -= Time.deltaTime;
+                }
             }
             else
             {
-                // update animator if using character
-                if (_hasAnimator)
+                // reset the jump timeout timer
+                _jumpTimeoutDelta = JumpTimeout;
+                
+                // fall timeout
+                if (_fallTimeoutDelta >= 0.0f)
                 {
-                    _animator.SetBool(_animIDFreeFall, true);
+                    _fallTimeoutDelta -= Time.deltaTime;
                 }
+                else
+                {
+                    // update animator if using character
+                    if (_hasAnimator)
+                    {
+                        _animator.SetBool(_animIDFreeFall, true);
+                    }
+                }
+                // if we are not grounded, do not do things
+                action = false;
+                // if we are not grounded, do not jump
+                _input.jump = false;
             }
-            // if we are not grounded, do not do things
-            action = false;
-            // if we are not grounded, do not jump
-            _input.jump = false;
         }
         // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
         if (_verticalVelocity < _terminalVelocity)
@@ -348,65 +354,67 @@ public class plrContCust : MonoBehaviour
         if (lfAngle > 360f) lfAngle -= 360f;
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
-        
     // ReSharper disable Unity.PerformanceAnalysis//////what is this??
     private void customActions()//yard tool code
-    { 
-        //crouch control-needs animaition added
-        if (_input.crouch)
+    {
+        if (lockDown==false)
         {
-            CinemachineCameraTarget.transform.localPosition = new Vector3(0,0,0);
-            //add animation
-        }
-        else
-        {
-            CinemachineCameraTarget.transform.localPosition = new Vector3(0,1,0);
-            //change animation
-        }
 
-        if (action)
-        {    //interact-needs animation added
-            if (_input.interact && _actionTimeoutDelta <= 0.0f)
-            {   //if button is down
-                
-                // pulled this from jump section
-                if (_hasAnimator)
-                {
-                    //just a generic tap/grab anim
-                    //_animator.SetBool(_animIDtool, true);
-                }
-                Collider[] objs = Physics.OverlapSphere(transform.position, 10);
-                foreach (var item in objs)
-                {
-                    if (item.gameObject.CompareTag("InteractObj"))
-                    {
-                        item.SendMessage("activate");
-                    }
-                }
-                action = false;
-                _input.interact = false;
-            }
-            //plrInvent.useToolA.Invoke(); tool code
-
-            //whistle control-needs animation added
-            if (_input.whistle && _actionTimeoutDelta <= 0.0f)
+            //crouch control-needs animaition added
+            if (_input.crouch)
             {
-                if (whistleObj!=null)
-                {
-                    whistleObj.GetComponentInChildren<Animation>().Play();
-                }
-
-                Collider[] genus = Physics.OverlapSphere(transform.position, 30,layermask);
-                foreach (var buddy in genus)
-                {
-                    buddy.SendMessage("called");
-                }
-                action = false;
-                _input.whistle = false;
+                CinemachineCameraTarget.transform.localPosition = new Vector3(0,0,0);
+                //add animation
             }
+            else
+            {
+                CinemachineCameraTarget.transform.localPosition = new Vector3(0,1,0);
+                //change animation
+            }
+
+            if (action)
+            {    //interact-needs animation added
+                if (_input.interact && _actionTimeoutDelta <= 0.0f)
+                {   //if button is down
+                
+                    // pulled this from jump section
+                    if (_hasAnimator)
+                    {
+                        //just a generic tap/grab anim
+                        //_animator.SetBool(_animIDtool, true);
+                    }
+                    Collider[] objs = Physics.OverlapSphere(transform.position, 10);
+                    foreach (var item in objs)
+                    {
+                        if (item.gameObject.CompareTag("InteractObj"))
+                        {
+                            item.SendMessage("activate");
+                        }
+                    }
+                    action = false;
+                    _input.interact = false;
+                }
+                //plrInvent.useToolA.Invoke(); tool code
+
+                //whistle control-needs animation added
+                if (_input.whistle && _actionTimeoutDelta <= 0.0f)
+                {
+                    if (whistleObj!=null)
+                    {
+                        whistleObj.GetComponentInChildren<Animation>().Play();
+                    }
+
+                    Collider[] genus = Physics.OverlapSphere(transform.position, 30,layermask);
+                    foreach (var buddy in genus)
+                    {
+                        buddy.SendMessage("called");
+                    }
+                    action = false;
+                    _input.whistle = false;
+                }
+            }
+            
         }
-        
-        
         //delay after doing something before doing something again
         if (_actionTimeoutDelta >= 0.0f)
         {   
@@ -418,12 +426,11 @@ public class plrContCust : MonoBehaviour
             action = true;
         }
     }
-        
+    //public voids
     public void swapRoom(string dest)
     {
         SceneManager.LoadScene(dest);
     }
-
     public void swapTool(toolData thing)
     {
         Destroy(baby);
@@ -432,6 +439,20 @@ public class plrContCust : MonoBehaviour
         baby.transform.rotation = toolSpot.transform.rotation;
         baby.transform.parent = toolSpot.transform;
     }
+    public void LockDown()
+    {
+        if (lockDown==false) {
+            lockDown = true;
+        }
+        else {
+            if (lockDown==true)
+            {
+                lockDown = false;
+            }
+        }
+    }
+    
+    //sfx code
     private void OnFootstep(AnimationEvent animationEvent)
     {
         if (animationEvent.animatorClipInfo.weight > 0.5f)

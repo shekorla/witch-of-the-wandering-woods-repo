@@ -74,8 +74,12 @@ public class creatureAI: MonoBehaviour
             StartCoroutine(waiting());
         }
     }
-    
 
+
+    public creatData whoRU()
+    {
+        return MyData;
+    }
     IEnumerator waiting()//this is just the delay timer
     {
         if (agent.pathPending)
