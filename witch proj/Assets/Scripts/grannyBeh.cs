@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class grannyBeh : MonoBehaviour
 {
-    public UnityEvent Talking;
     public Animator boss;
     
     private int animID;

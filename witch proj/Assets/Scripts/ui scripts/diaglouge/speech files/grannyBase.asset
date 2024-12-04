@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e43aa17341d8a46b507ebff2527005, type: 3}
+  m_Name: grannyBase
+  m_EditorClassIdentifier: 
+  speakerName: Granny
+  wordParagraph:
+  - Hello dear, welcome to the garden. Head inside to brew potions, or out back to
+    visit the genii. You can use this chest next to me to sell and acess storage.
