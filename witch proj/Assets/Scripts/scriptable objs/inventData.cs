@@ -1,15 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
+//scriptable objs act as save files
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Inventory")]
 public class inventData : ScriptableObject
 {
-    public List<plantData> cropsList,seedsList;
+    //add variables here for name/pronoun settings
+    public List<plantData> cropsList;
     public float money;
-    public plantData currentSeed;
-    public toolData heldTool;
-    public UnityEvent useToolA;
     
     public void sell(plantData item)
     {
@@ -25,67 +23,25 @@ public class inventData : ScriptableObject
         cropsList.Add(item);
     }
 
-    public void buySeed(plantData item)//when buy seeds add to list
-    {
-        if (money>=item.plantCost)
-        {
-            seedsList.Add(item);
-            money -= item.plantCost;
-        }
-    }
-
-    public bool canPlant()//need to have seeds to plant seeds
-    {
-        if (seedsList.Contains(currentSeed))
-        {
-            seedsList.Remove(currentSeed);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public int howManySeeds(plantData countThis, string buttonType)
+    public int howManyOwn(plantData countThis)
     {
         int number = 0;
-        if (buttonType=="seed") {
-            foreach (plantData listItem in seedsList)
-            {
-                if (listItem==countThis)
-                {
-                    number++;
-                }
-            }
-        }
-        else if (buttonType=="crops") {
-            foreach (plantData listItem in cropsList)
-            {
-                if (listItem==countThis)
-                {
-                    number++;
-                }
+        foreach (plantData listItem in cropsList)
+        { 
+            if (listItem==countThis) {
+                number++;
             }
         }
         return number;
     }
-
-    public void changeTool(toolData swap)
-    {
-        heldTool = swap;
-    }
-
-    public void changeSeed(plantData mine)
-    {
-        currentSeed = mine;
-    }
-
     public void moneyChange(int value)
     {
         money += value;
     }
 
+    //later move these to a room boss obj
+    //probs one that controls volume elements as well
+    // this code will be iterated as a save file
     public void pauseTime()
     {
         Time.timeScale = 0;

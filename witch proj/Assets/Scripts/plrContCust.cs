@@ -431,14 +431,6 @@ public class plrContCust : MonoBehaviour
     {
         SceneManager.LoadScene(dest);
     }
-    public void swapTool(toolData thing)
-    {
-        Destroy(baby);
-        plrInvent.heldTool = thing;
-        baby=Instantiate(thing.prefab, toolSpot.transform.position, Quaternion.identity);
-        baby.transform.rotation = toolSpot.transform.rotation;
-        baby.transform.parent = toolSpot.transform;
-    }
     public void LockDown()
     {
         if (lockDown==false) {

@@ -18,19 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8cc804012a017b24c9ec1786e399a957, type: 2}
   - {fileID: 11400000, guid: 4ef0ad49bfe555a479afad6a87474501, type: 2}
   - {fileID: 11400000, guid: 46ada0d082130f44385928eeeac940be, type: 2}
-  seedsList:
+  - {fileID: 11400000, guid: 4ef0ad49bfe555a479afad6a87474501, type: 2}
+  - {fileID: 11400000, guid: 46ada0d082130f44385928eeeac940be, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  - {fileID: 11400000, guid: 8cc804012a017b24c9ec1786e399a957, type: 2}
   - {fileID: 11400000, guid: 87643e82229944a42af9890b628e3452, type: 2}
-  money: 25
-  currentSeed: {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
-  heldTool: {fileID: 11400000, guid: 9df1b40a596efad4ea30806140c3916a, type: 2}
-  useToolA:
-    m_PersistentCalls:
-      m_Calls: []
+  money: 43
