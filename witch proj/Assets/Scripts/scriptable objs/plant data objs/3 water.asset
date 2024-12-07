@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
-  m_Name: light
+  m_Name: 3 water
   m_EditorClassIdentifier: 
-  pltVis: {fileID: 3013464090244478396, guid: cbd22355bcdd66642b45b72467e271ea, type: 3}
+  pltVis: {fileID: 1657426698814022501, guid: 53b6c80df516b974c905861668a9a105, type: 3}
   growTime: 0.2
   waterNeed: 50
   unlocked: 1
-  plantName: sunflower
-  plantVal: 200
-  plantCost: 120
-  plantSprite: {fileID: 0}
+  plantName: willow
+  plantVal: 30
+  plantCost: 10
+  plantSprite: {fileID: 21300000, guid: 4ce8357944aca2b4aa50d72093fab692, type: 3}

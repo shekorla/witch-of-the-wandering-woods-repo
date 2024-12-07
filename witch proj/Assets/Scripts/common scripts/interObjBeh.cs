@@ -10,7 +10,6 @@ public class interObjBeh : MonoBehaviour
     
     private void Start()
     {
-        ready = false;
         buttPrompt = GetComponentInChildren(typeof(Canvas)).gameObject; 
         promptLoc = buttPrompt.transform.localPosition;
         standby();

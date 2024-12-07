@@ -18,6 +18,11 @@ public class MenuUiBeh : MonoBehaviour
         transform.rotation = genii.transform.rotation;
         //change the ui to match pet data
         genDat = genii.whoRU();
+        refresh();
+    }
+
+    public void refresh()//call this when data changes, or setup a coroutine when active
+    {
         nickName.text = genDat.nickName;
         fly.fillAmount = (genDat.fly / 100f);
         run.fillAmount = genDat.run / 100f;

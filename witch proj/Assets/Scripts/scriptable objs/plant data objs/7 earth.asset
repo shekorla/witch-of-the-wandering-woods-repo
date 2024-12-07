@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
-  m_Name: fire
+  m_Name: 7 earth
   m_EditorClassIdentifier: 
-  pltVis: {fileID: 776347608962953118, guid: 966bd275e004aed4d9c83a3720ab96d1, type: 3}
+  pltVis: {fileID: 5752169000355292811, guid: 5f1ee9a204ef61a4ebcb8ffb8842b930, type: 3}
   growTime: 0.2
   waterNeed: 50
   unlocked: 0
-  plantName: torchflower
-  plantVal: 100
-  plantCost: 50
-  plantSprite: {fileID: 0}
+  plantName: mandrake
+  plantVal: 150
+  plantCost: 110
+  plantSprite: {fileID: 21300000, guid: 5947c0aa531c31c42be13bf93476df66, type: 3}

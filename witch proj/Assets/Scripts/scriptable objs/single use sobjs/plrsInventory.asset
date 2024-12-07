@@ -22,4 +22,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46ada0d082130f44385928eeeac940be, type: 2}
   - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
   - {fileID: 11400000, guid: 87643e82229944a42af9890b628e3452, type: 2}
-  money: 43
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: 8462f8986cb0e7841ae83534c2d67381, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
+  - {fileID: 11400000, guid: c60a19a96e7a71241a29e8e240a54bf2, type: 2}
+  - {fileID: 11400000, guid: 71e8f678bbbee4c4eb3cda8aaf0e338f, type: 2}
+  money: 98

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b3368c2c800cdd46bdcf9d0b207b790, type: 3}
-  m_Name: mana
+  m_Name: 6 wind
   m_EditorClassIdentifier: 
-  pltVis: {fileID: 1590997835404328236, guid: b5f145cd487d3f3489e7ab3fb8c3ad36, type: 3}
-  growTime: 1
-  waterNeed: 20
-  unlocked: 1
-  plantName: marigold
-  plantVal: 20
-  plantCost: 5
-  plantSprite: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  pltVis: {fileID: 6120064032429390770, guid: d5da307add5adff439400e4e3f57d998, type: 3}
+  growTime: 0.2
+  waterNeed: 50
+  unlocked: 0
+  plantName: reed
+  plantVal: 100
+  plantCost: 75
+  plantSprite: {fileID: 21300000, guid: 92f23b4fee24e3847a15c414c62b05e1, type: 3}

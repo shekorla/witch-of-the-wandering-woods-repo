@@ -43,6 +43,10 @@ public class gardenBedBeh : MonoBehaviour
         }//should be active by default, but add else here if needed
     }
 
+    public void plantSucessEV()
+    {
+        plantSuccess.Invoke();
+    }
     public void unlockMe()//turn on if unlocked
     {
         plotLocked = false;
