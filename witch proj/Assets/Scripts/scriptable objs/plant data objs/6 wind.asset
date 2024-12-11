@@ -17,6 +17,7 @@ MonoBehaviour:
   waterNeed: 50
   unlocked: 0
   plantName: reed
+  potName: coolling
   plantVal: 100
   plantCost: 75
   plantSprite: {fileID: 21300000, guid: 92f23b4fee24e3847a15c414c62b05e1, type: 3}

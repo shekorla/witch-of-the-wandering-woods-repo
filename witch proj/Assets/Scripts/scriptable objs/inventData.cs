@@ -7,15 +7,31 @@ public class inventData : ScriptableObject
 {
     //add variables here for name/pronoun settings
     public List<plantData> cropsList;
+    public List<string> potionInvent;
     public float money;
     
+    public void addPot(plantData item)
+    {
+        potionInvent.Add(item.potName);
+    }
     public void sell(plantData item)
     {
-        if (cropsList.Contains(item))
+        if (potionInvent.Contains(item.potName))
         {
-            cropsList.Remove(item);
+            potionInvent.Remove(item.potName);
             money += item.plantVal;
         }
+    }
+    public int howManyPot(plantData countThis)
+    {
+        int number = 0;
+        foreach (string listItem in potionInvent)
+        { 
+            if (listItem==countThis.potName) {
+                number++;
+            }
+        }
+        return number;
     }
 
     public void harvest(plantData item)//add crops to list on harvest
@@ -38,6 +54,7 @@ public class inventData : ScriptableObject
     {
         money += value;
     }
+    
 
     //later move these to a room boss obj
     //probs one that controls volume elements as well

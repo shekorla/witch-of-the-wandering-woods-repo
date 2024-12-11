@@ -17,6 +17,7 @@ MonoBehaviour:
   waterNeed: 50
   unlocked: 0
   plantName: torchflower
+  potName: warmth
   plantVal: 100
   plantCost: 50
   plantSprite: {fileID: 21300000, guid: 6f61a12af6224e144a257c106d3d75b2, type: 3}

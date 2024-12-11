@@ -17,6 +17,7 @@ MonoBehaviour:
   waterNeed: 50
   unlocked: 0
   plantName: mandrake
+  potName: earth
   plantVal: 150
   plantCost: 110
   plantSprite: {fileID: 21300000, guid: 5947c0aa531c31c42be13bf93476df66, type: 3}
