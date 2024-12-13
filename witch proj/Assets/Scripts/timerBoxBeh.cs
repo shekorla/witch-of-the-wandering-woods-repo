@@ -1,30 +1,39 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class timerBoxBeh : MonoBehaviour
 {
     public Image img;
-    public float srtVal,fillPercent;
+    public float fillPercent,timerNum,i,num;
 
     private void Start()
     {
-        fillPercent = 1 / srtVal;
-        img.fillAmount = 1;
+        img.fillAmount = 0;
     }
 
-    IEnumerable<WaitForSecondsRealtime> loop()
+    public void callLoop()
+    {
+        //fillPercent = time;
+        //add a parameter to this function that will change for long cook time
+        StartCoroutine(loop());
+    }
+
+    public void refresh()
+    {
+        img.fillAmount = 0;
+    }
+    IEnumerator loop()
     {
         float i,num;
-        i = srtVal;
-        num = 1;
-        while (i>0)
+        i = 0;
+        num = 0;
+        while (i<timerNum)
         {
+            num+= fillPercent;
             img.fillAmount = num;
-            num-= fillPercent;
             i++;
             yield return new WaitForSecondsRealtime(1);
         }
-        Destroy(this.gameObject);
     }
 }

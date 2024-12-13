@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90ef2763acc2e24795b7993f0b1b34a, type: 3}
   m_Name: prototype
   m_EditorClassIdentifier: 
-  nickName: test
+  nickName: greg
   fly: 47
   run: 27
   swim: 11

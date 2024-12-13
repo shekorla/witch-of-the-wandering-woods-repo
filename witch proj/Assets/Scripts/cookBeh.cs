@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class cookBeh : MonoBehaviour
 {
-    public UnityEvent doneCook,startLoop,endLoop;
     public inventData items;
-    public List<string> cookQue;
     public Text listHere;
-    public GameObject timerObj,timerParent;
+    public List<timerBoxBeh> timerObj;
+    public UnityEvent doneCook,startLoop,endLoop;
+    public List<string> cookQue;
     
     //click button to add recipe to que
         //button on left, adds to right?
@@ -22,63 +22,65 @@ public class cookBeh : MonoBehaviour
         doneCook.Invoke();
     }
 
-    public void canIcook(plantData ingredient)
+    public void canIcook(plantData call)
     {
+        string ingredient;
+        ingredient = call.plantName;
         StopCoroutine(cookingTime());
-        switch (ingredient.plantName)
+        switch (ingredient)
         {
             case "bleeding heart":
-            if (items.howManyOwn(ingredient)>=3)
+            if (items.howManyPlnt(ingredient)>=3)
             {
-                cookThis(ingredient.potName);
+                cookThis(ingredient);
             }
             break;
             case "marigold":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "willow":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "jewel orcid":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "torchflower":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "reed":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "mandrake":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "sunflower":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
             case "moonflower":
-                if (items.howManyOwn(ingredient)>=3)
+                if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient.potName);
+                    cookThis(ingredient);
                 }
                 break;
         }
@@ -114,16 +116,21 @@ public class cookBeh : MonoBehaviour
     
     IEnumerator cookingTime()
     {
+        int i = 0;
         listHere.text = "";
         startLoop.Invoke();
         foreach (var meal in cookQue)
         {
-            //Instantiate(timerObj, timerParent.transform);
+            timerObj[i].callLoop();
             items.potionInvent.Add(meal);
+            i++;
             yield return new WaitForSecondsRealtime(5);
         }
         endLoop.Invoke();
         cookQue.Clear();
-        yield break;
+        foreach (var round in timerObj)
+        {
+            round.refresh();
+        }
     }
 }

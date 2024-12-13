@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerName: Granny
   wordParagraph:
-  - Hello dear, welcome to the garden. Head inside to brew potions, or out back to
-    visit the genii. You can use this chest next to me to sell and acess storage.
+  - Hello dear, welcome to the demo.
+  - Try growing plants in the garden, brewing potions at the cauldron, or catch our
+    little hopping friend.

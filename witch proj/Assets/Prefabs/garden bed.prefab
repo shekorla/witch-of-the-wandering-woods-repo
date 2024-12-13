@@ -6870,26 +6870,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6744388981554490946}
     m_Modifications:
-    - target: {fileID: 5124573350234321118, guid: b24daa2af4d471143a1c5c1b777be809,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5124573350234321118, guid: b24daa2af4d471143a1c5c1b777be809,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5124573350234321118, guid: b24daa2af4d471143a1c5c1b777be809,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7151023144436563603, guid: b24daa2af4d471143a1c5c1b777be809,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7151023144827353796, guid: b24daa2af4d471143a1c5c1b777be809,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7060,11 +7040,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plant button (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7151023145665155797, guid: b24daa2af4d471143a1c5c1b777be809,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24daa2af4d471143a1c5c1b777be809, type: 3}

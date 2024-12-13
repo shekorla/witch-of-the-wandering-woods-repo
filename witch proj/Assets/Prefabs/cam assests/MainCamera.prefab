@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: 2, z: 0.1}
+  ShoulderOffset: {x: 0, y: 2.6, z: 0}
   VerticalArmLength: 0
   CameraSide: 1
-  CameraDistance: 0
+  CameraDistance: -0.1
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -392,22 +392,22 @@ PrefabInstance:
     - target: {fileID: 7615232397084904598, guid: fa27cb2bc14d42b479666fcf14db7eae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9232824
+      value: 4.4626713
       objectReference: {fileID: 0}
     - target: {fileID: 7615232397084904598, guid: fa27cb2bc14d42b479666fcf14db7eae,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.637232
+      value: 11.374439
       objectReference: {fileID: 0}
     - target: {fileID: 7615232397084904598, guid: fa27cb2bc14d42b479666fcf14db7eae,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8609104
+      value: 0.85796684
       objectReference: {fileID: 0}
     - target: {fileID: 7615232397084904598, guid: fa27cb2bc14d42b479666fcf14db7eae,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5087566
+      value: 0.51370513
       objectReference: {fileID: 0}
     - target: {fileID: 7615232397084904598, guid: fa27cb2bc14d42b479666fcf14db7eae,
         type: 3}

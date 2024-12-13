@@ -22,12 +22,12 @@ public class inventData : ScriptableObject
             money += item.plantVal;
         }
     }
-    public int howManyPot(plantData countThis)
+    public int howManyPot(string countThis)
     {
         int number = 0;
         foreach (string listItem in potionInvent)
         { 
-            if (listItem==countThis.potName) {
+            if (listItem==countThis) {
                 number++;
             }
         }
@@ -39,12 +39,12 @@ public class inventData : ScriptableObject
         cropsList.Add(item);
     }
 
-    public int howManyOwn(plantData countThis)
+    public int howManyPlnt(string countThis)
     {
         int number = 0;
         foreach (plantData listItem in cropsList)
         { 
-            if (listItem==countThis) {
+            if (listItem.plantName==countThis) {
                 number++;
             }
         }

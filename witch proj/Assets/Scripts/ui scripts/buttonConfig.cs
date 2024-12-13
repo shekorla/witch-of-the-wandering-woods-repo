@@ -71,7 +71,7 @@ public class buttonConfig : MonoBehaviour
     private void buttons()
     {
         MyButt.interactable = true;
-        cropNum = playerIn.howManyOwn(myData);
+        cropNum = playerIn.howManyPlnt(myData.plantName);
         string Cnumtotxt = cropNum.ToString();
         string priceTxt = myData.plantCost.ToString();
         if (addPrice)
