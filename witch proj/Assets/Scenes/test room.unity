@@ -1714,6 +1714,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffd0c5fc2d41cd4ebb083a976a9e13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1829302826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6688664703482887928, guid: 958f5a17554e8eb47afdcbefb1a1eb85,
+    type: 3}
+  m_PrefabInstance: {fileID: 651296119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1841173810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7364747338908053823, guid: 02f0db9c898e3274b94684de78634762,
@@ -1920,6 +1926,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1560299378, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f, type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 1829302826}
     - target: {fileID: 3842052890811752513, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
         type: 3}
       propertyPath: m_Name
@@ -1995,6 +2005,11 @@ PrefabInstance:
       propertyPath: doneCook.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 651296120}
+    - target: {fileID: 3842052890811752527, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: doneCook.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: FreeRoam
+      objectReference: {fileID: 0}
     - target: {fileID: 3842052891018539275, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
         type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2010,11 +2025,41 @@ PrefabInstance:
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1416977796}
+    - target: {fileID: 3842052891821347504, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3842052891821347516, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 473755532}
+    - target: {fileID: 3842052892393725491, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9983246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842052892393725491, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.052963845
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842052892393725491, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.023266437
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842052892393725491, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0012343479
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842052892674420895, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -675
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5de9f74e7ae1f7b4bbb37b3d4a6dbc7f, type: 3}
 --- !u!1001 &7364747338463585293

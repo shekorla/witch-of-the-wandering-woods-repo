@@ -90,8 +90,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Avatar creation failed:\n\tTransform 'J_Sec_Hair2_01' for human
-      bone 'Jaw' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -153,7 +152,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: Root
+    - boneName: J_Bip_C_Hips
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}

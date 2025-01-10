@@ -433,17 +433,14 @@ public class plrContCust : MonoBehaviour
     }
     public void LockDown()
     {
-        if (lockDown==false) {
-            lockDown = true;
-            LockCameraPosition = true;
-        }
-        else {
-            if (lockDown==true)
-            {
-                lockDown = false;
-                LockCameraPosition = false;
-            }
-        }
+        lockDown = true;
+        LockCameraPosition = true;
+    }
+
+    public void FreeRoam()
+    {
+        lockDown = false;
+        LockCameraPosition = false;
     }
     
     //sfx code

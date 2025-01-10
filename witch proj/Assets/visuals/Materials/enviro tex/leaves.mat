@@ -21,8 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: leaves
-  m_Shader: {fileID: 4800000, guid: 99134b1f0c27d54469a840832a28fadf, type: 3}
-  m_ShaderKeywords: EFFECT_HUE_VARIATION _ALPHATEST_ON _WINDQUALITY_FASTEST
+  m_Shader: {fileID: -6465566751694194690, guid: 11d22cfad9e74484093d5f04f42782ba,
+    type: 3}
+  m_ShaderKeywords: EFFECT_BILLBOARD EFFECT_HUE_VARIATION _ALPHATEST_ON _WINDQUALITY_FASTEST
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -32,6 +33,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_17B1C51B:
+        m_Texture: {fileID: 2800000, guid: 036af166929310247bb50d212bc03230, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTexture:
+        m_Texture: {fileID: 2800000, guid: 036af166929310247bb50d212bc03230, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 036af166929310247bb50d212bc03230, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -101,15 +110,26 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_A27A3D7E: 100
+    - Vector1_CC2ACFFC: 0.1
+    - Vector1_E74BFB7C: 0.7
     - _AO: 2.4
     - _AlphaClip: 1
     - _BaseLight: 0.271
-    - _BillboardKwToggle: 0
+    - _BillboardKwToggle: 1
     - _BillboardShadowFade: 0.5
     - _Blend: 0
+    - _BranchForceHeaviness: 1
+    - _BranchHeaviness: 1
+    - _BranchRipple: 1
+    - _BranchRippleSpeed: 1
+    - _BranchTurbulences: 1
+    - _BranchWhip: 1
+    - _Brightness: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Contrast: 1
     - _Cull: 0
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -121,7 +141,13 @@ Material:
     - _GlossinessSource: 0
     - _GlossyReflections: 1
     - _HueVariationKwToggle: 1
+    - _IntensityNm: 1
+    - _LeafRipple: 1
+    - _LeafRippleSpeed: 1
+    - _LeafTumble: 1
+    - _LeafTumbleSpeed: 1
     - _Metallic: 1
+    - _MetallicStrength: 1
     - _Mode: 0
     - _NormalMapKwToggle: 0
     - _Occlusion: 8
@@ -129,9 +155,12 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Saturation: 1
     - _Shininess: 0
     - _Smoothness: 0.684
+    - _SmoothnessInts: 1
     - _SmoothnessSource: 0
+    - _SmoothnessStrength: 1
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
     - _SpecularHighlights: 1
@@ -139,13 +168,23 @@ Material:
     - _SrcBlend: 1
     - _SubsurfaceIndirect: 1
     - _SubsurfaceKwToggle: 0
+    - _SubsurfaceRough: 1
     - _Surface: 0
-    - _TwoSided: 2
+    - _TwoSided: 0
     - _UVSec: 0
+    - _WindAmplitude: 1
+    - _WindDegreeSlope: 1
+    - _WindDensity: 0.4
     - _WindQuality: 1
+    - _WindSpeed: 1
+    - _WindStrength: 0.4
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_27150168: {r: 3.4039216, g: 2.773906, b: 0.6274509, a: 0.73333335}
+    - Color_A94F19A0: {r: 1, g: 1, b: 1, a: 0.4117647}
+    - Color_C19B377F: {r: 0.6793788, g: 0.8962264, b: 0.14711636, a: 0.41568628}
+    - Color_F306B785: {r: 0.9150943, g: 0.89890116, b: 0.081149824, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 0.9454513, b: 0.5235849, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
@@ -155,4 +194,5 @@ Material:
     - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 0}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
+    - _WindMovement: {r: 6, g: 0, b: 6, a: 0}
   m_BuildTextureStacks: []
