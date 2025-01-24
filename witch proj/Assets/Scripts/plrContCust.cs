@@ -83,11 +83,8 @@ public class plrContCust : MonoBehaviour
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
     // animation IDs
-    private int _animIDSpeed;
-    private int _animIDGrounded;
-    private int _animIDJump;
-    private int _animIDFreeFall;
-    private int _animIDMotionSpeed;
+    private int _animIDSpeed, _animIDGrounded, _animIDJump, _animIDFreeFall;
+    private int _animIDMotionSpeed, _animIDCrouch, _animIDWhistle;
     //items used repeatedly
     private Animator _animator;
     private CharacterController _controller;
@@ -173,6 +170,8 @@ public class plrContCust : MonoBehaviour
         _animIDJump = Animator.StringToHash("Jump");
         _animIDFreeFall = Animator.StringToHash("FreeFall");
         _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        _animIDCrouch = Animator.StringToHash("crouch");
+        _animIDWhistle = Animator.StringToHash("Whistle");
     }
     private void GroundedCheck()
     {
@@ -364,12 +363,19 @@ public class plrContCust : MonoBehaviour
             if (_input.crouch)
             {
                 CinemachineCameraTarget.transform.localPosition = new Vector3(0,0,0);
-                //add animation
+                // update animator if using character
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDCrouch, true);
+                }
             }
             else
             {
                 CinemachineCameraTarget.transform.localPosition = new Vector3(0,1,0);
-                //change animation
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDCrouch, false);
+                }
             }
 
             if (action)
@@ -380,7 +386,7 @@ public class plrContCust : MonoBehaviour
                     // pulled this from jump section
                     if (_hasAnimator)
                     {
-                        //just a generic tap/grab anim
+                        //need to make just a generic tap/grab anim
                         //_animator.SetBool(_animIDtool, true);
                     }
                     Collider[] objs = Physics.OverlapSphere(transform.position, 10);
@@ -402,6 +408,11 @@ public class plrContCust : MonoBehaviour
                     if (whistleObj!=null)
                     {
                         whistleObj.GetComponentInChildren<Animation>().Play();
+                        
+                    }
+                    if (_hasAnimator)
+                    {
+                        _animator.SetBool(_animIDWhistle,true);
                     }
 
                     Collider[] genus = Physics.OverlapSphere(transform.position, 30,layermask);
@@ -409,8 +420,10 @@ public class plrContCust : MonoBehaviour
                     {
                         buddy.SendMessage("called");
                     }
+                    
                     action = false;
                     _input.whistle = false;
+                    
                 }
             }
             
