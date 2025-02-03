@@ -2007,7 +2007,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: plrContCust, Assembly-CSharp
-        m_MethodName: LockDown
+        m_MethodName: FreeRoam
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2028,6 +2028,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: to main
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3842052892393725490}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   startLoop:
     m_PersistentCalls:
@@ -2628,7 +2640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3842052891821347505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3356,7 +3368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -674.99994, y: 115}
+  m_AnchoredPosition: {x: -675, y: 115}
   m_SizeDelta: {x: -1360, y: -240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3842052892674420893
@@ -3685,11 +3697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3710,7 +3722,11 @@ PrefabInstance:
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3842052892393725490}
+    - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
+      propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 3842052892350087537}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3753,11 +3769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_Follow
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
-      value: set_LookAt
+      value: BroadcastMessage
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3777,11 +3793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: Cinemachine.CinemachineVirtualCamera, Cinemachine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
-      value: Cinemachine.CinemachineVirtualCamera, Cinemachine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -3810,7 +3826,7 @@ PrefabInstance:
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 3842052890811752526}
+      objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_StringArgument
       value: 
@@ -3818,7 +3834,11 @@ PrefabInstance:
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 3842052890811752526}
+      objectReference: {fileID: 0}
+    - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
+      propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_StringArgument
+      value: refresh
+      objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -3837,11 +3857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 220874743, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: triggered.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 748023992, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3861,19 +3881,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2133174479, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9983246
       objectReference: {fileID: 0}
     - target: {fileID: 2133174479, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.052963845
       objectReference: {fileID: 0}
     - target: {fileID: 2133174479, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.023266437
       objectReference: {fileID: 0}
     - target: {fileID: 2133174479, guid: d35038aa216029a43989181257492913, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0012343479
       objectReference: {fileID: 0}
     - target: {fileID: 3595948995656919107, guid: d35038aa216029a43989181257492913,
         type: 3}
