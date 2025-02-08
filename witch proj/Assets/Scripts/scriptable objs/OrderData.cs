@@ -4,5 +4,6 @@ using UnityEngine;
 public class OrderData : ScriptableObject
 {
     public string wanted;
-    public int lineNum;
+    public int lineNum,value;
+    public plantData PotInfo;
 }

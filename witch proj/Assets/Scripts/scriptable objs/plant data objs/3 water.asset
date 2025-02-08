@@ -21,3 +21,4 @@ MonoBehaviour:
   plantVal: 30
   plantCost: 10
   plantSprite: {fileID: 21300000, guid: 4ce8357944aca2b4aa50d72093fab692, type: 3}
+  PotSprite: {fileID: 21300000, guid: 4ce8357944aca2b4aa50d72093fab692, type: 3}
