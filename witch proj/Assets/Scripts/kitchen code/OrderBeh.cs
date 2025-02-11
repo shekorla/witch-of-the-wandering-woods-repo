@@ -76,15 +76,17 @@ public class OrderBeh : MonoBehaviour
 
     public void configTrays()
     {
-        int i = 0;
+        int t = 0;
         foreach (var tray in trays)
         {
-            if (orders[i])//if the order exists then configure, otherwise skip
+            if (orders[t])//if the order exists then configure, otherwise skip
             {
-                tray.myOrder = orders[i];
+                Debug.Log("configure");
+                tray.myOrder = orders[t];
                 tray.waiting();
             }
-            i+=1;
+            Debug.Log(t);
+            t+=1;
         }
     }
     
@@ -95,14 +97,14 @@ public class OrderBeh : MonoBehaviour
         while (openShop&&orders.Count<=6)
         {
             thing = ScriptableObject.CreateInstance<OrderData>();
-            thing.PotInfo = canOrder[Random.Range(0, canOrder.Length - 1)];
+            thing.PotInfo = canOrder[Random.Range(0, canOrder.Length-1)];
             thing.name = "Order " + i+ " "+ thing.PotInfo.potName;
             thing.wanted = thing.PotInfo.potName;
             thing.lineNum = i;
             orders.Add(thing);
             i++;
             configTrays();
-            yield return new WaitForSecondsRealtime(Random.Range(2,5));
+            yield return new WaitForSecondsRealtime(Random.Range(5,10));
         }
         endLoop.Invoke();
         yield break;
