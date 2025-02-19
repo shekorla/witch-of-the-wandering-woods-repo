@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pltVis: {fileID: 8148012249828083122, guid: 36d372702c580b540b951b0da389f55d, type: 3}
   growTime: 0
-  waterNeed: 0
+  waterNeed: 20
   unlocked: 1
   plantName: empty
   potName: empty
@@ -22,3 +22,4 @@ MonoBehaviour:
   plantCost: 0
   plantSprite: {fileID: 21300000, guid: 6154806bb7df2c441a0b3d359f9ec098, type: 3}
   PotSprite: {fileID: 21300000, guid: 6154806bb7df2c441a0b3d359f9ec098, type: 3}
+  cookTime: 0

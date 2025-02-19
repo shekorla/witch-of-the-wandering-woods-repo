@@ -8,10 +8,14 @@ using Random = UnityEngine.Random;
 
 public class OrderBeh : MonoBehaviour
 {
+    [Tooltip("true if open, false if closed")]
     public bool openShop;
+    [Tooltip(" the text obj in the cooking menu")]
     public Text displayOrders;
-    public OrderData thing;
+    [Tooltip("add player inv here")]
     public inventData plrInv;
+    [Tooltip("ignore this it needs to be public")]
+    public OrderData thing;
     
     public List<OrderData> orders;
     public TrayBeh[] trays;
@@ -21,12 +25,14 @@ public class OrderBeh : MonoBehaviour
 
     private Animator signCont;
     private static readonly int Open = Animator.StringToHash("open");
+    private int totalOrders;
 
     private void Start()
     {
         signCont = GetComponentInChildren<Animator>();
         openStore();//take this out after debugging
         orders.Clear();
+        totalOrders = 0;
     }
 
     public void openStore()
@@ -45,7 +51,7 @@ public class OrderBeh : MonoBehaviour
         }
     }
 
-    public void whatNeedCook()
+    public void refresh()//this is for the visual list
     {
         if (orders.Count>=1)
         {
@@ -53,7 +59,7 @@ public class OrderBeh : MonoBehaviour
             printThis = "";
             foreach (var item in orders)
             {
-                printThis += item + Environment.NewLine;
+                printThis += item.name + Environment.NewLine;
             }
             displayOrders.text = printThis;
         }
@@ -63,48 +69,40 @@ public class OrderBeh : MonoBehaviour
     {
         if (plrInv.potionInvent.Contains(fillThis.myOrder.wanted))//if you have item then give money
         {
-            plrInv.moneyChange(fillThis.myOrder.PotInfo.plantVal);
-            plrInv.potionInvent.Remove(fillThis.myOrder.wanted);
-            orders.Remove(fillThis.myOrder);
-            fillThis.filled();
+         plrInv.sell(fillThis.myOrder.PotInfo);//removes items, and gives money
+         orders.Remove(fillThis.myOrder); //
+         fillThis.filled(); //reset the visuals
+
+         if (orders.Count<3)//call the function to regenerate orders once player has had a break
+         {
+             StartCoroutine(Delay());
+         } 
         }
         else
         {
-            //put stuff here to have icon flash red or something.
-        }
-    }
-
-    public void configTrays()
-    {
-        int t = 0;
-        foreach (var tray in trays)
-        {
-            if (orders[t])//if the order exists then configure, otherwise skip
-            {
-                Debug.Log("configure");
-                tray.myOrder = orders[t];
-                tray.waiting();
-            }
-            Debug.Log(t);
-            t+=1;
+            fillThis.fail();//plr feedback visuals
         }
     }
     
+    
     IEnumerator Delay()
     {
-        int i = 0;
+        int i = 0;//i is which tray in the list is being used
         startLoop.Invoke();
-        while (openShop&&orders.Count<=6)
+        while (openShop&&orders.Count<6)
         {
             thing = ScriptableObject.CreateInstance<OrderData>();
-            thing.PotInfo = canOrder[Random.Range(0, canOrder.Length-1)];
-            thing.name = "Order " + i+ " "+ thing.PotInfo.potName;
+            thing.PotInfo = canOrder[Random.Range(0, canOrder.Length)];
+            thing.name = "Order " + totalOrders+ " "+ thing.PotInfo.potName;
             thing.wanted = thing.PotInfo.potName;
-            thing.lineNum = i;
+            thing.lineNum = i;//acts weird if i add it before its fully configured.
             orders.Add(thing);
+            trays[i].myOrder = thing;//
+            trays[i].waiting();//tell tray to set up visuals
+            //yield return new WaitForSecondsRealtime(Random.Range(5,10));
+            yield return new WaitForSecondsRealtime(1);//short for debugging
             i++;
-            configTrays();
-            yield return new WaitForSecondsRealtime(Random.Range(5,10));
+            totalOrders++;
         }
         endLoop.Invoke();
         yield break;

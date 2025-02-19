@@ -6,19 +6,20 @@ public class interObjBeh : MonoBehaviour
     public UnityEvent triggered;
     private bool ready;
     private GameObject buttPrompt;
-    private Vector3 promptLoc;
+    private Vector3 downLoc,topLoc;
     
     private void Start()
     {
         buttPrompt = GetComponentInChildren(typeof(Canvas)).gameObject; 
-        promptLoc = buttPrompt.transform.localPosition;
+        topLoc = buttPrompt.transform.localPosition;
+        downLoc=topLoc;
+        downLoc.y -= 3;
         standby();
     }
     public void standby()
     {
         ready = false;
-        promptLoc.y -= 3;
-        buttPrompt.transform.localPosition = promptLoc;
+        buttPrompt.transform.localPosition = downLoc;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,8 +27,7 @@ public class interObjBeh : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ready = true;
-            promptLoc.y += 3;
-            buttPrompt.transform.localPosition = promptLoc;
+            buttPrompt.transform.localPosition = topLoc;
         }
     }
 
@@ -44,6 +44,7 @@ public class interObjBeh : MonoBehaviour
         if (ready)
         {
             triggered.Invoke();
+            standby();
         }
     }
 }

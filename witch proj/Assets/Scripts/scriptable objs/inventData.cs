@@ -55,17 +55,19 @@ public class inventData : ScriptableObject
         money += value;
     }
     
-
-    //later move these to a room boss obj
-    //probs one that controls volume elements as well
-    // this code will be iterated as a save file
-    public void pauseTime()
+    //debug items
+    public void clearCrops()
     {
-        Time.timeScale = 0;
+        cropsList.Clear();
     }
 
-    public void resumeTime()
+    public void clearPots()
     {
-        Time.timeScale = 1;
+        potionInvent.Clear();
+    }
+
+    public void resetMoney()
+    {
+        money = 50;
     }
 }

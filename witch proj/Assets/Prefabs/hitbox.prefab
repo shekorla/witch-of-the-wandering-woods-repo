@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748023991}
-  m_LocalRotation: {x: -0.08034569, y: 0.5426804, z: 0.052252203, w: 0.83445334}
+  m_LocalRotation: {x: 0.0005953588, y: 0.72425604, z: -0.0006253416, w: 0.6895306}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -94,7 +94,8 @@ LookAtConstraint:
   m_IsContraintActive: 1
   m_IsLocked: 1
   m_Sources:
-  - sourceTransform: {fileID: 0}
+  - sourceTransform: {fileID: 6688664703482887928, guid: 958f5a17554e8eb47afdcbefb1a1eb85,
+      type: 3}
     weight: 1
 --- !u!1 &1605604925
 GameObject:

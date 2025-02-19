@@ -10,13 +10,18 @@ public class cookBeh : MonoBehaviour
     public inventData items;
     public Text listHere;
     public List<timerBoxBeh> timerObj;
-    public UnityEvent doneCook,startLoop,endLoop;
-    public List<string> cookQue;
+    public UnityEvent  startSetup, doneCook,startLoop,endLoop;
+    public List<plantData> cookQue;
     
     //click button to add recipe to que
-        //button on left, adds to right?
-    //click cook to do mini game and fin cook
-    //or just click fin and they will cook over time?
+        //button on left, adds to right
+    //click fin and they will cook over time
+        //in future maybe click cook to do mini game and fin cooking
+    private void Start()
+    {
+        startSetup.Invoke();
+    }
+
     public void invokeDoneCook()
     {
         doneCook.Invoke();
@@ -32,61 +37,61 @@ public class cookBeh : MonoBehaviour
             case "bleeding heart":
             if (items.howManyPlnt(ingredient)>=3)
             {
-                cookThis(ingredient);
+                cookThis(call);
             }
             break;
             case "marigold":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "willow":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "jewel orcid":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "torchflower":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "reed":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "mandrake":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "sunflower":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
             case "moonflower":
                 if (items.howManyPlnt(ingredient)>=3)
                 {
-                    cookThis(ingredient);
+                    cookThis(call);
                 }
                 break;
         }
     }
 
-    public void cookThis(string item)//add to cooking que
+    public void cookThis(plantData item)//add to cooking que
     {
         cookQue.Add(item);
         listHere.text += item+Environment.NewLine;
@@ -121,10 +126,11 @@ public class cookBeh : MonoBehaviour
         startLoop.Invoke();
         foreach (var meal in cookQue)
         {
-            timerObj[i].callLoop();
-            items.potionInvent.Add(meal);
+            items.cropsList.Remove(meal);
+            timerObj[i].callLoop(meal.cookTime);
             i++;
-            yield return new WaitForSecondsRealtime(5);
+            yield return new WaitForSecondsRealtime(meal.cookTime);
+            items.potionInvent.Add(meal.potName);
         }
         endLoop.Invoke();
         cookQue.Clear();

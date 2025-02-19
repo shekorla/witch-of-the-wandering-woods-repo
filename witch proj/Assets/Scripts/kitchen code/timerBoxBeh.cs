@@ -5,24 +5,25 @@ using UnityEngine.UI;
 public class timerBoxBeh : MonoBehaviour
 {
     public Image img;
-    public float fillPercent,timerNum,i,num;
+    public float fillPercent,timerNum;
 
     private void Start()
     {
-        img.fillAmount = 0;
+        refresh();
     }
-
-    public void callLoop()
-    {
-        //fillPercent = time;
-        //add a parameter to this function that will change for long cook time
-        StartCoroutine(loop());
-    }
-
+    //just resets visuals
     public void refresh()
     {
         img.fillAmount = 0;
     }
+
+    public void callLoop(float seconds)
+    {
+        fillPercent = 1f / seconds;
+        timerNum = seconds;
+        StartCoroutine(loop());
+    }
+    
     IEnumerator loop()
     {
         float i,num;

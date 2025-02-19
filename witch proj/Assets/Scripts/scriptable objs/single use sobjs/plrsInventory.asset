@@ -39,5 +39,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d9dad4d2e314abf4593c3136a17b8365, type: 2}
   - {fileID: 11400000, guid: a698cd3c15a085e4c99f180f547706e4, type: 2}
   - {fileID: 11400000, guid: 46ada0d082130f44385928eeeac940be, type: 2}
-  potionInvent: []
-  money: 200
+  potionInvent:
+  - healing
+  money: 240

@@ -22,3 +22,4 @@ MonoBehaviour:
   plantCost: 5
   plantSprite: {fileID: 21300000, guid: 45a35fc6e7017034fa23e3678c64800e, type: 3}
   PotSprite: {fileID: 21300000, guid: 45a35fc6e7017034fa23e3678c64800e, type: 3}
+  cookTime: 5

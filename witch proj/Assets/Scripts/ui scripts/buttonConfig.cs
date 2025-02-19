@@ -43,39 +43,29 @@ public class buttonConfig : MonoBehaviour
 
     public void refresh()
     {
-        //clean up the if statements later
         if (myData.unlocked)//can only interact with unlocked ones
         {
-            buttons();
+            MyButt.interactable = true;
         }
         else
         {
-            NoUse();
+            MyButt.interactable = false;
         }
-
-        if (playerIn.money>=myData.plantCost)//come back when you get some money buddy
-        {
-            buttons();
-        }
-        else
-        {
-            NoUse();
-        }
+        
+        configure();
     }
 
-
-    private void NoUse()
+    void configure()
     {
-        MyButt.interactable = false;
-    }
-    private void buttons()
-    {
-        MyButt.interactable = true;
         cropNum = playerIn.howManyPlnt(myData.plantName);
         string Cnumtotxt = cropNum.ToString();
         string priceTxt = myData.plantCost.ToString();
         if (addPrice)
         {
+            if (playerIn.money>=myData.plantCost)//come back when you get some money buddy
+            {
+                MyButt.interactable = false;    
+            }
             changeMe.text = ("Crops: "+ Cnumtotxt+ Environment.NewLine+"Price: "+priceTxt);
         }
         else
